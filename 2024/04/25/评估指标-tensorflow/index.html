@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>评估指标(tensorflow和keras) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Keras和tensorflow的评估指标很相似,评估功能都内置在函数库中。 评估功能呢包括计算accuracy,loss和其他自定义指标。 一.tensorflow的评估步骤 1.编译模型 在 训练 和 评估 开始之前,需要先 编译模型 以及 指定损失函数和优化器。 可以调用 compile 方法来完成。 12model.compile(optimizer&#x3D;&#x27;adam&#x27;,lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="评估指标(tensorflow和keras)">
+<meta property="og:url" content="http://example.com/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87-tensorflow/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Keras和tensorflow的评估指标很相似,评估功能都内置在函数库中。 评估功能呢包括计算accuracy,loss和其他自定义指标。 一.tensorflow的评估步骤 1.编译模型 在 训练 和 评估 开始之前,需要先 编译模型 以及 指定损失函数和优化器。 可以调用 compile 方法来完成。 12model.compile(optimizer&#x3D;&#x27;adam&#x27;,lo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-25T08:15:45.000Z">
+<meta property="article:modified_time" content="2024-04-25T08:40:15.113Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-评估指标-tensorflow" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87-tensorflow/" class="article-date">
+  <time class="dt-published" datetime="2024-04-25T08:15:45.000Z" itemprop="datePublished">2024-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      评估指标(tensorflow和keras)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Keras和tensorflow的评估指标很相似,评估功能都内置在函数库中。</p>
+<p>评估功能呢包括计算accuracy,loss和其他自定义指标。</p>
+<p>一.tensorflow的评估步骤</p>
+<p>1.编译模型</p>
+<p>在 训练 和 评估 开始之前,需要先 编译模型 以及 指定损失函数和优化器。</p>
+<p>可以调用 compile 方法来完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>,loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>,metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"><span class="comment">#optimizer为优化器,loss为损失函数,metrcis为评估方式</span></span><br></pre></td></tr></table></figure>
+
+<p>2.评估模型</p>
+<p>调用模型的evaluate方法,需要提供评估数据集作为输入，并且指定评估的batch_size。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss,accuracy=model.evaluate(test_dataset,batch_size=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+
+<p>evaluate方法会返回一个包含loss和accuracy的list,可以根据需要选择这些值。</p>
+<p>3.自定义方法</p>
+<p>我们可以自定义评估函数,实例代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_metric</span>(<span class="params">y_true,y_pred</span>):</span><br><span class="line">    <span class="comment">#自定义内容</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ...</span><br><span class="line"></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>,loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>,metrics=[custom_metric])</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>二.keras的评估指标</p>
+<p>1.与tensorflow相同，第一步为编译模型</p>
+<p>若以accuracy为评估指标，要在metrics中填入accuracy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;categorical_crossentropy&#x27;</span>, metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>若以loss为评估指标,要在metrics中填入loss</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;categorical_crossentropy&#x27;</span>, metrics=[<span class="string">&#x27;loss&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>2.自定义评估</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> keras.backend <span class="keyword">as</span> K</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_metric</span>(<span class="params">y_true, y_pred</span>):</span><br><span class="line">    <span class="comment"># 自定义评估指标的计算逻辑</span></span><br><span class="line">    <span class="comment"># 根据真实标签和预测标签计算指标值</span></span><br><span class="line">    <span class="keyword">return</span> ...</span><br><span class="line"></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;categorical_crossentropy&#x27;</span>, metrics=[custom_metric])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87-tensorflow/" data-id="clvezuh5m0000mg953o0z8rau" data-title="评估指标(tensorflow和keras)" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">评估指标(sklearn)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" rel="tag">数据预处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" style="font-size: 10px;">数据预处理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87-tensorflow/">评估指标(tensorflow和keras)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/25/%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87/">评估指标(sklearn)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/25/%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/">日志记录</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/22/%E5%88%86%E8%AF%8D-jieba%E5%BA%93/">分词(jieba库)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/22/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">正则表达式(re库)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
