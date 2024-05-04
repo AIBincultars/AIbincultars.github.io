@@ -493,31 +493,45 @@
 <p>   df&#x3D;pd.read_csv(“刚保存文件的绝对路径”,index_col&#x3D;0) #index_col&#x3D;0 表示将第一列作为索引</p>
 <p>读写的更多操作:</p>
 <p>保存</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pd.to_excel(<span class="string">&quot;name.xlsx&quot;</span>)</span><br><span class="line">pd.to_json()</span><br><span class="line">pd.to_sql()</span><br><span class="line">pd.to_pickle()</span><br></pre></td></tr></table></figure>
+<pre><code class="python">pd.to_excel(&quot;name.xlsx&quot;)
+pd.to_json()
+pd.to_sql()
+pd.to_pickle()
+</code></pre>
 <p>读取</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel()</span><br><span class="line">pd.read_json()</span><br><span class="line">pd.read_html()</span><br><span class="line">pd.read_sql()</span><br><span class="line">pd.read_pickle()</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">pd.read_excel()
+pd.read_json()
+pd.read_html()
+pd.read_sql()
+pd.read_pickle()
+</code></pre>
 <p>三.更多DataFrame操作</p>
 <p>1)loc[] 可以获得指定行和列 名称的数据<br>获取在”a”行”b”列的数据<br><code>df.loc[&quot;a&quot;,&quot;b&quot;]</code><br>直接根据列名获取,即获取”b”列的数据<br><code>df.loc[&quot;b&quot;]</code><br>获取多列数据，即获取”b”列和”c”列的数据<br><code>df.loc[[&quot;b&quot;,&quot;c&quot;]]</code></p>
 <p>2)iloc[] 获取某一行<br>操作格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[行],[列]]</span><br></pre></td></tr></table></figure>
+<pre><code class="python">df.iloc[[行],[列]]
+</code></pre>
 <p>第一行所有列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[<span class="number">1</span>],]</span><br></pre></td></tr></table></figure>
+<pre><code class="python">df.iloc[[1],]
+</code></pre>
 <p>获得1到3行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[<span class="number">1</span>,<span class="number">4</span>],]</span><br></pre></td></tr></table></figure>
+<pre><code class="python">df.iloc[[1,4],]
+</code></pre>
 <p>获取0到2行，1,2,3列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">df.iloc[[0,2],[1,2,3]]
+</code></pre>
 <p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[df[<span class="string">&quot;CONT&quot;</span>] == <span class="string">&quot;Asia&quot;</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="python">df.loc[df[&quot;CONT&quot;] == &quot;Asia&quot;]
+</code></pre>
 <p>若需要满足多个条件，用 &amp; 连接即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[(df[<span class="string">&quot;CONT&quot;</span>] == <span class="string">&quot;Asia&quot;</span>) &amp; (df[<span class="string">&quot;GDP&quot;</span>] &gt; <span class="number">1000</span>)]  <span class="comment"># 注意 &amp; 左右两边的条件要加上（），否则报错</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">df.loc[(df[&quot;CONT&quot;] == &quot;Asia&quot;) &amp; (df[&quot;GDP&quot;] &gt; 1000)]  # 注意 &amp; 左右两边的条件要加上（），否则报错
+</code></pre>
 <p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.plot.bar()</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">df.plot.bar()
+</code></pre>
 <p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&quot;POP&quot;</span>].plot.bar()</span><br></pre></td></tr></table></figure>
+<pre><code class="python">df[&quot;POP&quot;].plot.bar()
+</code></pre>
+
                 
             </div>
             <hr/>

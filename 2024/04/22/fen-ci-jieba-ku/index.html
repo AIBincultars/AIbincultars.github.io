@@ -417,7 +417,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    94
+                    93
                 </div>
                 
 
@@ -449,16 +449,20 @@
             <div id="articleContent">
                 <p>jieba库是基于统计学的中文分词词库</p>
 <p>1.第一步是先导入jieba库</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">import jieba
+</code></pre>
 <ol start="2">
 <li>jieba的模式</li>
 </ol>
 <p>1)cut_all&#x3D;True 即全模式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seg_list=jieba.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Full Mode:&quot;</span>+<span class="string">&#x27;/&#x27;</span>.join(seg_list))</span><br></pre></td></tr></table></figure>
+<pre><code class="python">seg_list=jieba.cut(&quot;我来到北京清华大学&quot;,cut_all=True)
+print(&quot;Full Mode:&quot;+&#39;/&#39;.join(seg_list))
+</code></pre>
 <p>seg_list保存的所有的可能分词结果</p>
 <p>‘#’.join(seg_list),其中的#代表每个分词的 分隔符号</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="python">
+</code></pre>
+
                 
             </div>
             <hr/>
