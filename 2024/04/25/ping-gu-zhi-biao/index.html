@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="对自己的话, Hexo">
+    <meta name="keywords" content="评估指标(sklearn), Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>对自己的话 | Hexo</title>
+    <title>评估指标(sklearn) | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">对自己的话</h1>
+                    <h1 class="description center-align post-title">评估指标(sklearn)</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-04-21
+                    2024-04-25
                 </div>
                 
 
@@ -452,7 +452,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21
+                    357
                 </div>
                 
 
@@ -482,8 +482,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>略无慕艳意，以中有足乐者，不知口体之奉不若人也</p>
+                <p>“评估指标” 用来评价机器学习模型的性能 </p>
+<p>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)</p>
+<p>指标的英文-“metrics”</p>
+<p>sklearn库中的评估指标 </p>
+<p>1)accuracy-准确率</p>
+<p>a. 模型预测正确的样本 占 总样本数 的比例,用于评估 分类模型 的性能</p>
+<p>b.使用函数 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sklearn.metrics.accuracy_score</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>c.示例代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 真实标签</span></span><br><span class="line">y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 预测标签</span></span><br><span class="line">y_pred = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算准确率</span></span><br><span class="line">accuracy = accuracy_score(y_true, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Accuracy:&quot;</span>, accuracy)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2)precision-精确率,recall-召回率</p>
+<p>a.precision和recall用来评估 二分类模型</p>
+<p>precision 衡量模型预测中为 正类的样本中实际为正类的比例</p>
+<p>recall 衡量 实际为正类的样本 被 正确预测 的正类比例</p>
+<p>b.使用函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sklearn.metrics.precision_score</span><br><span class="line"></span><br><span class="line">sklearn.metrics.recall_score</span><br><span class="line"></span><br><span class="line">c.示例代码</span><br><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 真实标签</span></span><br><span class="line">y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 预测标签</span></span><br><span class="line">y_pred = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算精确率</span></span><br><span class="line">precision = precision_score(y_true, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Precision:&quot;</span>, precision)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算召回率</span></span><br><span class="line">recall = recall_score(y_true, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Recall:&quot;</span>, recall)</span><br></pre></td></tr></table></figure>
+
+<p>3)f1_score - F1分数</p>
+<p>a.f1分数 综合考虑了precision和recall的评估指标,用于平衡二者之间的权衡关系</p>
+<p>b.使用函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.metrics.f1_score</span><br></pre></td></tr></table></figure>
+
+<p>c.示例代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 真实标签</span></span><br><span class="line">y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 预测标签</span></span><br><span class="line">y_pred = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算F1分数</span></span><br><span class="line">f1 = f1_score(y_true, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;F1 Score:&quot;</span>, f1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -509,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/04/21/hello-world/">https://aibincultars.github.io/2024/04/21/hello-world/</a>
+                    <a href="https://aibincultars.github.io/2024/04/25/ping-gu-zhi-biao/">https://aibincultars.github.io/2024/04/25/ping-gu-zhi-biao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,13 +742,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/04/22/wen-ben-shu-ju-chu-li/">
+                <a href="/2024/04/25/ping-gu-zhi-biao-tensorflow/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="正则表达式(re库)">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="评估指标(tensorflow和keras)">
                         
-                        <span class="card-title">正则表达式(re库)</span>
+                        <span class="card-title">评估指标(tensorflow和keras)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -735,7 +759,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-25
                         </span>
                         <span class="publish-author">
                             
@@ -755,13 +779,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/21/wen-ben-shu-ju-du-qu/">
+                <a href="/2024/04/25/ri-zhi-ji-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="文本数据读取">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="日志记录">
                         
-                        <span class="card-title">文本数据读取</span>
+                        <span class="card-title">日志记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -772,7 +796,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-25
                             </span>
                         <span class="publish-author">
                             
@@ -781,14 +805,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">数据预处理</span>
-                    </a>
-                    
                 </div>
                 
             </div>
