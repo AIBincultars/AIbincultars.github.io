@@ -448,6 +448,11 @@
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -493,45 +498,38 @@
 <p>   df&#x3D;pd.read_csv(“刚保存文件的绝对路径”,index_col&#x3D;0) #index_col&#x3D;0 表示将第一列作为索引</p>
 <p>读写的更多操作:</p>
 <p>保存</p>
-<pre><code class="python">pd.to_excel(&quot;name.xlsx&quot;)
-pd.to_json()
-pd.to_sql()
-pd.to_pickle()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">"name.xlsx"</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>to_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>读取</p>
-<pre><code class="python">pd.read_excel()
-pd.read_json()
-pd.read_html()
-pd.read_sql()
-pd.read_pickle()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>read_html<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>read_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pd<span class="token punctuation">.</span>read_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>三.更多DataFrame操作</p>
 <p>1)loc[] 可以获得指定行和列 名称的数据<br>获取在”a”行”b”列的数据<br><code>df.loc[&quot;a&quot;,&quot;b&quot;]</code><br>直接根据列名获取,即获取”b”列的数据<br><code>df.loc[&quot;b&quot;]</code><br>获取多列数据，即获取”b”列和”c”列的数据<br><code>df.loc[[&quot;b&quot;,&quot;c&quot;]]</code></p>
 <p>2)iloc[] 获取某一行<br>操作格式</p>
-<pre><code class="python">df.iloc[[行],[列]]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>第一行所有列</p>
-<pre><code class="python">df.iloc[[1],]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>获得1到3行</p>
-<pre><code class="python">df.iloc[[1,4],]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>获取0到2行，1,2,3列</p>
-<pre><code class="python">df.iloc[[0,2],[1,2,3]]
-</code></pre>
-<p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
-<pre><code class="python">df.loc[df[&quot;CONT&quot;] == &quot;Asia&quot;]
-</code></pre>
-<p>若需要满足多个条件，用 &amp; 连接即可。</p>
-<pre><code class="python">df.loc[(df[&quot;CONT&quot;] == &quot;Asia&quot;) &amp; (df[&quot;GDP&quot;] &gt; 1000)]  # 注意 &amp; 左右两边的条件要加上（），否则报错
-</code></pre>
-<p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
-<pre><code class="python">df.plot.bar()
-</code></pre>
-<p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
-<pre><code class="python">df[&quot;POP&quot;].plot.bar()
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若需要满足多个条件，用 &amp; 连接即可。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"GDP"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># 注意 &amp; 左右两边的条件要加上（），否则报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">"POP"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -786,6 +784,8 @@ pd.read_pickle()
 
 <!-- 代码块收缩 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -903,7 +903,7 @@ pd.read_pickle()
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.8k</span>&nbsp;字
+                class="white-color">2.7k</span>&nbsp;字
             
             
             

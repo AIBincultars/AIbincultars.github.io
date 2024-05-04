@@ -417,7 +417,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    93
+                    87
                 </div>
                 
 
@@ -444,25 +444,27 @@
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>jieba库是基于统计学的中文分词词库</p>
 <p>1.第一步是先导入jieba库</p>
-<pre><code class="python">import jieba
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> jieba<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ol start="2">
 <li>jieba的模式</li>
 </ol>
 <p>1)cut_all&#x3D;True 即全模式</p>
-<pre><code class="python">seg_list=jieba.cut(&quot;我来到北京清华大学&quot;,cut_all=True)
-print(&quot;Full Mode:&quot;+&#39;/&#39;.join(seg_list))
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">seg_list<span class="token operator">=</span>jieba<span class="token punctuation">.</span>cut<span class="token punctuation">(</span><span class="token string">"我来到北京清华大学"</span><span class="token punctuation">,</span>cut_all<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Full Mode:"</span><span class="token operator">+</span><span class="token string">'/'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>seg_list<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>seg_list保存的所有的可能分词结果</p>
 <p>‘#’.join(seg_list),其中的#代表每个分词的 分隔符号</p>
-<pre><code class="python">
-</code></pre>
-
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -704,6 +706,8 @@ print(&quot;Full Mode:&quot;+&#39;/&#39;.join(seg_list))
 
 <!-- 代码块收缩 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -821,7 +825,7 @@ print(&quot;Full Mode:&quot;+&#39;/&#39;.join(seg_list))
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.8k</span>&nbsp;字
+                class="white-color">2.7k</span>&nbsp;字
             
             
             

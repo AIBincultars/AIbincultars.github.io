@@ -417,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    736
+                    710
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 
@@ -444,13 +444,18 @@
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>为了使模型训练可视化，python内置了logging库,比用print打印更省内存</p>
 <p>一.先导入logging库</p>
-<pre><code class="python">import logging
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>二.日志级别以及对应函数</p>
 <p>1)日志优先级</p>
 <p> CRIRICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG</p>
@@ -462,80 +467,79 @@
 <p>ERROR : 报错信息，程序的一些功能以及不可用</p>
 <p>CRITICAL ： 严重错误信息，程序已经不可以执行</p>
 <p>2)基本使用</p>
-<pre><code class="python">import logging
-#logging.basicConfig 相当于一个组合器，可以不在单独设置。
-logging.basicConfig(level = logging.INFO,format = &#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;) 
-#level中设置当前程序中日志的等级，低于该等级的不会输出,format中是输出的格式。
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
+<span class="token comment">#logging.basicConfig 相当于一个组合器，可以不在单独设置。</span>
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level <span class="token operator">=</span> logging<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span><span class="token builtin">format</span> <span class="token operator">=</span> <span class="token string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="token punctuation">)</span> 
+<span class="token comment">#level中设置当前程序中日志的等级，低于该等级的不会输出,format中是输出的格式。</span>
 
-#创建了一个日志记录器实例名字自拟。
-logger = logging.getLogger(_name_)
+<span class="token comment">#创建了一个日志记录器实例名字自拟。</span>
+logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>_name_<span class="token punctuation">)</span>
 
-#一下就是输出信息内容
-logger.info(&quot;Start print log&quot;)
-logger.debug(&quot;Do something&quot;)
-logger.warning(&quot;Something maybe fail.&quot;)
-logger.info(&quot;Finish&quot;)
+<span class="token comment">#一下就是输出信息内容</span>
+logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Start print log"</span><span class="token punctuation">)</span>
+logger<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">"Do something"</span><span class="token punctuation">)</span>
+logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">"Something maybe fail."</span><span class="token punctuation">)</span>
+logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Finish"</span><span class="token punctuation">)</span>
 
-#输出后debug不会输出因为等级比info低
-</code></pre>
+<span class="token comment">#输出后debug不会输出因为等级比info低</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>三.format的参数</p>
 <p>%(levelno)s：打印日志级别的数值<br>%(levelname)s：打印日志级别的名称<br>%(pathname)s：打印当前执行程序的路径，其实就是sys.argv[0]<br>%(filename)s：打印当前执行程序名<br>%(funcName)s：打印日志的当前函数<br>%(lineno)d：打印日志的当前行号<br>%(asctime)s：打印日志的时间<br>%(thread)d：打印线程ID<br>%(threadName)s：打印线程名称<br>%(process)d：打印进程ID<br>%(message)s：打印日志信息</p>
 <p>四.保存日志文件</p>
 <p>使用的是logging.FileHandler(路径)</p>
-<pre><code class="python">import logging
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
 
-#创建一个日志记录器
+<span class="token comment">#创建一个日志记录器</span>
 
-logger = logging.getLogger(_name_)
+logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span>_name_<span class="token punctuation">)</span>
 
-#设置日记级别
+<span class="token comment">#设置日记级别</span>
 
-logger.setLevel(logging.INFO)
+logger<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span>
 
-#创建一个FileHandler,并设置日志文件路径
+<span class="token comment">#创建一个FileHandler,并设置日志文件路径</span>
 
-log_file = &#39;XXX.log&#39;
+log_file <span class="token operator">=</span> <span class="token string">'XXX.log'</span>
 
-handler = logging.FileHandler(log_file)
+handler <span class="token operator">=</span> logging<span class="token punctuation">.</span>FileHandler<span class="token punctuation">(</span>log_file<span class="token punctuation">)</span>
 
-#创建一个格式化器
-formatter = logging.Formatter(&quot;%(asctime)s - %(name)s - %(levelname)s - %(message)s&quot;)
+<span class="token comment">#创建一个格式化器</span>
+formatter <span class="token operator">=</span> logging<span class="token punctuation">.</span>Formatter<span class="token punctuation">(</span><span class="token string">"%(asctime)s - %(name)s - %(levelname)s - %(message)s"</span><span class="token punctuation">)</span>
 
-#将格式化器添加到处理器
+<span class="token comment">#将格式化器添加到处理器</span>
 
-handler.setFormatter(formatter)
+handler<span class="token punctuation">.</span>setFormatter<span class="token punctuation">(</span>formatter<span class="token punctuation">)</span>
 
-#将处理器添加到日志记录器
+<span class="token comment">#将处理器添加到日志记录器</span>
 
-logger.addHandler(handler)
+logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>handler<span class="token punctuation">)</span>
 
 
-#输出日志消息
+<span class="token comment">#输出日志消息</span>
 
-logger.info(&quot;this is an info message&quot;)
+logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"this is an info message"</span><span class="token punctuation">)</span>
 
-logger.warning(&quot;this is a warning message&quot;)
-</code></pre>
+logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">"this is a warning message"</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>五.日志记录在迭代训练中的应用</p>
-<pre><code class="python">import logging
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> logging
 
-# 配置日志记录器
-logging.basicConfig(level=logging.INFO, format=&#39;%(asctime)s - %(levelname)s - %(message)s&#39;)
+<span class="token comment"># 配置日志记录器</span>
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%(asctime)s - %(levelname)s - %(message)s'</span><span class="token punctuation">)</span>
 
-# 模拟迭代训练过程
-for epoch in range(1, 6):
-    # 在每个epoch开始时记录信息
-    logging.info(f&quot;Epoch &#123;epoch&#125; started.&quot;)
+<span class="token comment"># 模拟迭代训练过程</span>
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 在每个epoch开始时记录信息</span>
+    logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Epoch </span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token punctuation">&#125;</span></span><span class="token string"> started."</span></span><span class="token punctuation">)</span>
 
-    # 在每个迭代中记录迭代号和损失值
-    for iteration in range(1, 11):
-        loss = 0.1 * iteration  # 这里仅作示例，假设损失值为0.1 * 迭代号
-        logging.info(f&quot;Iteration &#123;iteration&#125;: Loss = &#123;loss:.4f&#125;&quot;)
+    <span class="token comment"># 在每个迭代中记录迭代号和损失值</span>
+    <span class="token keyword">for</span> iteration <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        loss <span class="token operator">=</span> <span class="token number">0.1</span> <span class="token operator">*</span> iteration  <span class="token comment"># 这里仅作示例，假设损失值为0.1 * 迭代号</span>
+        logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Iteration </span><span class="token interpolation"><span class="token punctuation">&#123;</span>iteration<span class="token punctuation">&#125;</span></span><span class="token string">: Loss = </span><span class="token interpolation"><span class="token punctuation">&#123;</span>loss<span class="token punctuation">:</span><span class="token format-spec">.4f</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
 
-    # 在每个epoch结束时记录信息
-    logging.info(f&quot;Epoch &#123;epoch&#125; ended.&quot;)
-</code></pre>
-
+    <span class="token comment"># 在每个epoch结束时记录信息</span>
+    logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Epoch </span><span class="token interpolation"><span class="token punctuation">&#123;</span>epoch<span class="token punctuation">&#125;</span></span><span class="token string"> ended."</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -777,6 +781,8 @@ for epoch in range(1, 6):
 
 <!-- 代码块收缩 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -894,7 +900,7 @@ for epoch in range(1, 6):
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.8k</span>&nbsp;字
+                class="white-color">2.7k</span>&nbsp;字
             
             
             
