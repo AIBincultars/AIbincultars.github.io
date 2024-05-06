@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="文本数据读取, lab of ML">
+    <meta name="keywords" content="Rnn和lstm神经网络的应用, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>文本数据读取 | lab of ML</title>
+    <title>Rnn和lstm神经网络的应用 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">文本数据读取</h1>
+                    <h1 class="description center-align post-title">Rnn和lstm神经网络的应用</h1>
                 </div>
             </div>
         </div>
@@ -387,8 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                <span class="chip bg-color">数据预处理</span>
+                            <a href="/tags/%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8/">
+                                <span class="chip bg-color">代码应用</span>
                             </a>
                         
                     </div>
@@ -399,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                数据预处理
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8/" class="post-category">
+                                深度学习模型的应用
                             </a>
                         
                     </div>
@@ -412,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-04-21
+                    2024-05-06
                 </div>
                 
 
@@ -421,7 +421,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -456,80 +456,133 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>属于数据预处理的范畴，而文本数据读取是自然语言的第一步</p>
-<p>本章有四个知识点</p>
-<p>1.txt文本数据的读写</p>
-<p>2.CSV以及Excel文本数据的读写</p>
-<p>3.更多的DataFrame的操作</p>
-<p>4.对大规模数据的压缩</p>
-<p>一.txt文本数据的读写</p>
-<p>a. Python内置函数open()和write()可以实现对txt文本的读取或写入操作</p>
-<p>   open(“文件路径”,”读写模式”,encoding&#x3D;”编码格式”)</p>
-<p>文件路径:一般为绝对路径，因为数据就放在程序的文件夹中</p>
-<p>读写模式: 通俗讲就是对文件进行如何的操作,以下是常用的模式</p>
-<ol>
-<li><p>r:读取文件，文件不存在会报错<br>rb:读取二进制文件,文件不存在会报错<br>r+:可读可写，文件不存在会报错，写入操作时会覆盖原文件。</p>
-</li>
-<li><p>w:写入文件,若文件不存在则会先创建再写入，存在则覆盖原文件<br>wb:写入二进制文件，若文件不存在则会先创建再写入，存在则覆盖原文件<br>w+:可读可写，文件不存在则先创建，若存在则会覆盖。</p>
-</li>
-<li><p>a:写入文件，若文件不存在则会先创建再写入，存在不会覆盖原文件，会在源文件后续写。<br>a+:可读可写，文件不存在会先创建，若不存在则不会覆盖，在文件中继续写入内容。</p>
-</li>
-</ol>
-<p>编码格式: 一般用 utf-8 </p>
-<p>注：utf-8（8 位元，Universal Character Set&#x2F;Unicode Transformation Format）是针对 Unicode 的一种可变长度字符编码。它可以用来表示 Unicode 标准中的任何字符，而且其编码中的第一个字节仍与 ASCII 相容，使得原来处理 ASCII 字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-<p>b.read(),readlines(),readline()的区别</p>
-<p>1)若</p>
-<p>   f&#x3D;open(“file_path”,”w”,encoding&#x3D;”utf-8”)</p>
-<p>则用<br>   a&#x3D;f.read()  #读取整个文件存放到一个str变量中，若文件过大则无法使用该方法<br>   b&#x3D;f.readline() #每次只读取文件的一行，将每一行读到的数据存放到一个str变量中，可在文件过大时使用<br>   c&#x3D;f.readlines()  #按行读取整个文件内容，并将内容存放到一个list中<br>调用函数。</p>
-<p>2)type(a)是str   type(b)是str type(c)是list</p>
-<p>3)readline()方法</p>
-<p>   f &#x3D; open(“poem.txt”,”r”, encoding&#x3D;”utf-8”)<br>   while True:<br>      poem_line &#x3D; f.readline()<br>      if poem_line:<br>      print(type(poem_line), poem_line)  # 分次返回每一$行<br>   else:<br>      break</p>
-<p>c. write()</p>
-<p>   f.write(“内容”)<br>在open()函数中已经确定了写入内容的模式</p>
-<p>二.CSV及Excel文本数据的读写</p>
-<p>基于pandas对不同类型的文件数据进行操作</p>
-<p>先导入库<br>   import pandas as pd</p>
-<p>传入数据</p>
-<p>   df&#x3D;pd.DataFrame(data)</p>
-<p>一些对数据集的操作</p>
-<p>   df&#x3D;df.T #将数据集进行转置</p>
-<p>   df.to_csv(“数据集名称.csv”,encoding&#x3D;’utf-8’) #将df的内容保存在csv文件内</p>
-<p>用read_csv()读取刚生成的文件</p>
-<p>   df&#x3D;pd.read_csv(“刚保存文件的绝对路径”,index_col&#x3D;0) #index_col&#x3D;0 表示将第一列作为索引</p>
-<p>读写的更多操作:</p>
-<p>保存</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">"name.xlsx"</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>读取</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_html<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>一.前言</p>
+<pre><code>1.RNN网络，全称`Recurrent Neural Network`,中文为`循环神经网络`,主要是应用在`一系列序列化数据`的建模问题中,通俗地讲数据有顺序要求，比如在天气预测中，`每天`的天气变化,以及在文本处理中，句子中的词语的顺序。RNN网络能更好处理类似问题，但他存在一个问题，梯度消失以及梯度爆炸。
 
-<p>三.更多DataFrame操作</p>
-<p>1)loc[] 可以获得指定行和列 名称的数据<br>获取在”a”行”b”列的数据<br><code>df.loc[&quot;a&quot;,&quot;b&quot;]</code><br>直接根据列名获取,即获取”b”列的数据<br><code>df.loc[&quot;b&quot;]</code><br>获取多列数据，即获取”b”列和”c”列的数据<br><code>df.loc[[&quot;b&quot;,&quot;c&quot;]]</code></p>
-<p>2)iloc[] 获取某一行<br>操作格式</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>第一行所有列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获得1到3行</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获取0到2行，1,2,3列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>若需要满足多个条件，用 &amp; 连接即可。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"GDP"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># 注意 &amp; 左右两边的条件要加上（），否则报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+2.LSTM网络,全称`Long Short Term Memory`,中文为`长短期记忆递归网络`,是RNN网络的一种,它解决了原始RNN网络中梯度爆炸和梯度消失的问题，能更好的处理文本数据等等问题。
+</code></pre>
+<p>二.代码应用(pytorch)<br>    1.RNN<br>        1)torch.nn.RNN( input_size,<br>                        hidden_size,<br>                        num_layers&#x3D;1,<br>                        nonlinearity&#x3D;tanh,<br>                        bias&#x3D;True,<br>                        batch_first&#x3D;False,<br>                        dropout&#x3D;0,<br>                        bidirectional&#x3D;False)</p>
+<pre><code>    是torch.nn中的RNN层,可以用于神经网络模型的搭建,下面介绍各个参数的含义
 
-<p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    `input_size`: 输入特征的维度，通俗的讲就是该层需要知道一个样本中有几个特征，特征的数量就是`input_size`,在矩阵中的表现就是`矩阵的列`
 
-<p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">"POP"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    `hidden_size`:隐藏层神经元个数，也叫输出的纬度
+
+    `num_layers`:RNN网络的层数
+
+    `nonlinearity`:激活函数，一般为tanh
+
+    `bias`:是否使用偏置
+
+    `batch_first`:输入数据的形式，默认是 False，就是这样形式，(seq(num_step), batch, input_dim)，也就是将序列长度放在第一位，batch 放在第二位
+
+    `dropout`:是否应用dropout, 默认不使用，如若使用将其设置成一个0-1的数字即可,随机丢弃数据，防止过拟合
+
+    `birdirectional`:是否使用双向的 rnn，默认是 False
+
+
+    2)数据输入输出的形状
+        a. input_shape=[时间步数,批量大小,特征维度]= [num_steps(seq_length), batch_size, input_dim]
+
+        b. 在forward函数计算后,nn.RNN()会返回两个值：`输出`和`隐藏状态h`,通常我们需要得到的是`输出`,对于`隐藏状态h`可以用符号`_`接收。nn.LSTM()也会返回两个值：`输出`和`隐藏状态(t,c)`,隐藏状态是一个元组,形状为(层数,批量大小)
+
+        c.num_steps:时间步数，相当于需要经过几次处理，处理的次数就是num_steps
+
+
+    3)示例代码
+         <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import torch.nn as nn
+import torch
+ #需要导入该库
+
+    rnn_layer&#x3D;nn.RNN(input_size&#x3D;vocab_size,hidden_size&#x3D;num_hiddens)
+    #定义RNN模型层,其中我们假设vocab_size&#x3D;1027,hidden_size&#x3D;256<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+         <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">num_steps&#x3D;35
+
+batch_size&#x3D;2
+
+state&#x3D;None #初始隐藏层状态可以不定义
+
+X&#x3D;torch.rand(num_steps,batch_size,vocab_size)
+#生成数据
+
+Y, _ &#x3D; rnn_layer(X,state)
+
+
+print(Y.shape,len(_),_.shape)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        输出:
+        <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">torch.Size([35, 2, 256])     
+1       
+torch.Size([1, 2, 256])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+2.LSTM
+    LSTM的隐藏层比RNN多一个c,这样可以防止遗忘以及梯度问题。
+    1)torch.nn.LSTM( input_size, 
+                     hidden_size, 
+                     num_layers=1, 
+                     nonlinearity=tanh, 
+                     bias=True, 
+                     batch_first=False, 
+                     dropout=0, 
+                     bidirectional=False)
+
+    是torch.nn中的LSTM层,可以用于神经网络模型的搭建,下面介绍各个参数的含义
+
+    `input_size`: 输入特征的维度，通俗的讲就是该层需要知道一个样本中有几个特征，特征的数量就是`input_size`,在矩阵中的表现就是`矩阵的列`
+
+    `hidden_size`:隐藏层神经元个数，也叫输出的纬度
+
+    `num_layers`:LSTM网络的层数,默认为1
+
+    `nonlinearity`:激活函数，一般为tanh
+
+    `bias`:是否使用偏置,默认为True
+
+    `batch_first`:输入数据的形式，默认是 False，就是这样形式，(seq(num_step), batch, input_dim)，也就是将序列长度放在第一位，batch 放在第二位
+
+    `dropout`:是否应用dropout, 默认不使用，如若使用将其设置成一个0-1的数字即可,随机丢弃数据，防止过拟合
+
+    `birdirectional`:是否使用双向的lstm，默认是 False
+
+
+    2)数据的输入输出格式
+    
+        a.输入格式
+    <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">input(seq_len, batch, input_size)
+参数有：
+seq_len：序列长度，在NLP中就是句子长度，一般都会用pad_sequence补齐长度
+batch：每次喂给网络的数据条数，在NLP中就是一次喂给网络多少个句子
+input_size：特征维度，和前面定义网络结构的input_size,一般就是特征数vocab_size<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        b.输出格式
+        output.shape=[seq_len,batch,hidden_size*num_direction]
+        若为单向循环网络,num_direction=1
+        若为双向循环网络,num_direction=2
+        <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">output,(h,c)&#x3D;lstm(input)
+#output最后一个状态的隐藏层的神经元输出
+#h最后一个状态的隐藏层的状态值
+#c最后一个状态的隐含层的遗忘门值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+         
+
+    3)示例代码
+            先导入库
+            <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import torch.nn as nn
+import torch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+            x=torch.rand(10,24,100)
+            #随机生成数据
+            lstm=nn.LSTM(100,16,num_layers=2)
+            output,(h,c) = lstm(x)
+            print(output.size())
+            print(h.size())
+            print(c.size())
+
+            output:
+            torch.Size([24, 10, 16])
+            torch.Size([2, 10, 16])
+            torch.Size([2, 10, 16])
+
+            ```
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -555,7 +608,7 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/">https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/</a>
+                    <a href="https://aibincultars.github.io/2024/05/06/rnn-he-lstm-shen-jing-wang-luo-de-ying-yong/">https://aibincultars.github.io/2024/05/06/rnn-he-lstm-shen-jing-wang-luo-de-ying-yong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -593,8 +646,8 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                    <span class="chip bg-color">数据预处理</span>
+                                <a href="/tags/%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8/">
+                                    <span class="chip bg-color">代码应用</span>
                                 </a>
                             
                         </div>
@@ -638,58 +691,18 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/04/22/wen-ben-shu-ju-chu-li/">
+                <a href="/2024/05/06/rnn-he-lstm-shen-jing-wang-luo-de-ying-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="正则表达式(re库)">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Rnn和lstm神经网络的应用">
                         
-                        <span class="card-title">正则表达式(re库)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/04/21/wen-ben-shu-ju-du-qu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="文本数据读取">
-                        
-                        <span class="card-title">文本数据读取</span>
+                        <span class="card-title">Rnn和lstm神经网络的应用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -700,14 +713,14 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BA%94%E7%94%A8/" class="post-category">
+                                    深度学习模型的应用
                                 </a>
                             
                             
@@ -718,10 +731,51 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">数据预处理</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8/">
+                        <span class="chip bg-color">代码应用</span>
                     </a>
                     
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/04/29/pytorch-da-jian-shen-jing-wang-luo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="pytorch搭建神经网络">
+                        
+                        <span class="card-title">pytorch搭建神经网络</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/" class="post-category">
+                                    神经网络搭建
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>
