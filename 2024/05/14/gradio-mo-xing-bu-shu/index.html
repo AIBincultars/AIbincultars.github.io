@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="文本数据读取, lab of ML">
+    <meta name="keywords" content="gradio部署模型, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>文本数据读取 | lab of ML</title>
+    <title>gradio部署模型 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">文本数据读取</h1>
+                    <h1 class="description center-align post-title">gradio部署模型</h1>
                 </div>
             </div>
         </div>
@@ -385,13 +385,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                <span class="chip bg-color">数据预处理</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -399,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                数据预处理
+                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
+                                模型部署应用
                             </a>
                         
                     </div>
@@ -412,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-04-21
+                    2024-05-14
                 </div>
                 
 
@@ -421,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    361
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -456,80 +452,59 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>属于数据预处理的范畴，而文本数据读取是自然语言的第一步</p>
-<p>本章有四个知识点</p>
-<p>1.txt文本数据的读写</p>
-<p>2.CSV以及Excel文本数据的读写</p>
-<p>3.更多的DataFrame的操作</p>
-<p>4.对大规模数据的压缩</p>
-<p>一.txt文本数据的读写</p>
-<p>a. Python内置函数open()和write()可以实现对txt文本的读取或写入操作</p>
-<p>   open(“文件路径”,”读写模式”,encoding&#x3D;”编码格式”)</p>
-<p>文件路径:一般为绝对路径，因为数据就放在程序的文件夹中</p>
-<p>读写模式: 通俗讲就是对文件进行如何的操作,以下是常用的模式</p>
-<ol>
-<li><p>r:读取文件，文件不存在会报错<br>rb:读取二进制文件,文件不存在会报错<br>r+:可读可写，文件不存在会报错，写入操作时会覆盖原文件。</p>
-</li>
-<li><p>w:写入文件,若文件不存在则会先创建再写入，存在则覆盖原文件<br>wb:写入二进制文件，若文件不存在则会先创建再写入，存在则覆盖原文件<br>w+:可读可写，文件不存在则先创建，若存在则会覆盖。</p>
-</li>
-<li><p>a:写入文件，若文件不存在则会先创建再写入，存在不会覆盖原文件，会在源文件后续写。<br>a+:可读可写，文件不存在会先创建，若不存在则不会覆盖，在文件中继续写入内容。</p>
-</li>
-</ol>
-<p>编码格式: 一般用 utf-8 </p>
-<p>注：utf-8（8 位元，Universal Character Set&#x2F;Unicode Transformation Format）是针对 Unicode 的一种可变长度字符编码。它可以用来表示 Unicode 标准中的任何字符，而且其编码中的第一个字节仍与 ASCII 相容，使得原来处理 ASCII 字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-<p>b.read(),readlines(),readline()的区别</p>
-<p>1)若</p>
-<p>   f&#x3D;open(“file_path”,”w”,encoding&#x3D;”utf-8”)</p>
-<p>则用<br>   a&#x3D;f.read()  #读取整个文件存放到一个str变量中，若文件过大则无法使用该方法<br>   b&#x3D;f.readline() #每次只读取文件的一行，将每一行读到的数据存放到一个str变量中，可在文件过大时使用<br>   c&#x3D;f.readlines()  #按行读取整个文件内容，并将内容存放到一个list中<br>调用函数。</p>
-<p>2)type(a)是str   type(b)是str type(c)是list</p>
-<p>3)readline()方法</p>
-<p>   f &#x3D; open(“poem.txt”,”r”, encoding&#x3D;”utf-8”)<br>   while True:<br>      poem_line &#x3D; f.readline()<br>      if poem_line:<br>      print(type(poem_line), poem_line)  # 分次返回每一$行<br>   else:<br>      break</p>
-<p>c. write()</p>
-<p>   f.write(“内容”)<br>在open()函数中已经确定了写入内容的模式</p>
-<p>二.CSV及Excel文本数据的读写</p>
-<p>基于pandas对不同类型的文件数据进行操作</p>
-<p>先导入库<br>   import pandas as pd</p>
-<p>传入数据</p>
-<p>   df&#x3D;pd.DataFrame(data)</p>
-<p>一些对数据集的操作</p>
-<p>   df&#x3D;df.T #将数据集进行转置</p>
-<p>   df.to_csv(“数据集名称.csv”,encoding&#x3D;’utf-8’) #将df的内容保存在csv文件内</p>
-<p>用read_csv()读取刚生成的文件</p>
-<p>   df&#x3D;pd.read_csv(“刚保存文件的绝对路径”,index_col&#x3D;0) #index_col&#x3D;0 表示将第一列作为索引</p>
-<p>读写的更多操作:</p>
-<p>保存</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">"name.xlsx"</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>读取</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_html<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>gradio目前只支持tensorflow 1.x版本,而tensorflow2 移除了Session的使用,在gradio源码中注释掉,gradio就可以应用到tensorflow2上了。</p>
+<p>一.gradio的基本用法<br>1.gradio.Interface()</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 
-<p>三.更多DataFrame操作</p>
-<p>1)loc[] 可以获得指定行和列 名称的数据<br>获取在”a”行”b”列的数据<br><code>df.loc[&quot;a&quot;,&quot;b&quot;]</code><br>直接根据列名获取,即获取”b”列的数据<br><code>df.loc[&quot;b&quot;]</code><br>获取多列数据，即获取”b”列和”c”列的数据<br><code>df.loc[[&quot;b&quot;,&quot;c&quot;]]</code></p>
-<p>2)iloc[] 获取某一行<br>操作格式</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>第一行所有列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获得1到3行</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获取0到2行，1,2,3列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2<span class="token punctuation">.</span>MobileNetV2<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">'imagenet'</span><span class="token punctuation">)</span>
 
-<p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>若需要满足多个条件，用 &amp; 连接即可。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"GDP"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># 注意 &amp; 左右两边的条件要加上（），否则报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">'imageupload'</span><span class="token punctuation">,</span>outputs<span class="token operator">=</span><span class="token string">'label'</span><span class="token punctuation">,</span>model_type<span class="token operator">=</span><span class="token string">'keras'</span><span class="token punctuation">,</span>model<span class="token operator">=</span>model<span class="token punctuation">)</span>
+<span class="token triple-quoted-string string">'''
+创建界面对象
+输入方式 inputs 使用图片上传的方式
+输出方式 outputs 使用模型所对应的索引号
+模型类型 model_type 使用 keras
+模型传入上面定义的 MobileNet 模型
+'''</span>
 
-<p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">#该指令为启动指令</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后在终端</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python quick_start<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>二.使用imagenet</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
 
-<p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">"POP"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># 导入 ImageNet 预训练的 MobileNetV2</span>
+model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2<span class="token punctuation">.</span>MobileNetV2<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">'imagenet'</span><span class="token punctuation">)</span>
+<span class="token comment"># 定义输出为 gradio.outputs 对象，同时传入 imagenet 参数</span>
+outputs <span class="token operator">=</span> gradio<span class="token punctuation">.</span>outputs<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>label_names<span class="token operator">=</span><span class="token string">'imagenet1000'</span><span class="token punctuation">)</span>
+<span class="token comment"># 创建界面对象</span>
+io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">"imageupload"</span><span class="token punctuation">,</span> outputs<span class="token operator">=</span>outputs<span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">"keras"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>model<span class="token punctuation">)</span>
+<span class="token comment"># 启动服务</span>
+io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>三.使用手写输入</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+<span class="token comment"># 导入手写体识别模型</span>
+model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>models<span class="token punctuation">.</span>load_model<span class="token punctuation">(</span><span class="token string">'mnist_model.h5'</span><span class="token punctuation">)</span>
+<span class="token comment"># 初始化一个手写输入的对象，flatten=True 表示将图片一维化</span>
+inp <span class="token operator">=</span> gradio<span class="token punctuation">.</span>inputs<span class="token punctuation">.</span>Sketchpad<span class="token punctuation">(</span>flatten<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment"># 创建界面对象</span>
+io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span>inp<span class="token punctuation">,</span> outputs<span class="token operator">=</span><span class="token string">'label'</span><span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">"keras"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>model<span class="token punctuation">)</span>
+<span class="token comment"># 启动服务</span>
+io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>四.使用文本输入</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio
+
+<span class="token comment"># 定义一个英文的大写转换函数</span>
+<span class="token keyword">def</span> <span class="token function">upper</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 创建界面对象时设置输入为文本输入框，模型类别为 Python 函数</span>
+io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">"textbox"</span><span class="token punctuation">,</span> outputs<span class="token operator">=</span><span class="token string">"textbox"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>upper<span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">'pyfunc'</span><span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -555,7 +530,7 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/">https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/</a>
+                    <a href="https://aibincultars.github.io/2024/05/14/gradio-mo-xing-bu-shu/">https://aibincultars.github.io/2024/05/14/gradio-mo-xing-bu-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -592,11 +567,7 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                    <span class="chip bg-color">数据预处理</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -638,58 +609,18 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/04/22/wen-ben-shu-ju-chu-li/">
+                <a href="/2024/05/14/gradio-mo-xing-bu-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="正则表达式(re库)">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="gradio部署模型">
                         
-                        <span class="card-title">正则表达式(re库)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/04/21/wen-ben-shu-ju-du-qu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="文本数据读取">
-                        
-                        <span class="card-title">文本数据读取</span>
+                        <span class="card-title">gradio部署模型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -700,14 +631,14 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
+                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
+                                    模型部署应用
                                 </a>
                             
                             
@@ -716,12 +647,45 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                 </div>
 
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">数据预处理</span>
-                    </a>
-                    
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/05/14/tflite-bu-shu-mo-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="tflite部署模型">
+                        
+                        <span class="card-title">tflite部署模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
+                                    模型部署应用
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>

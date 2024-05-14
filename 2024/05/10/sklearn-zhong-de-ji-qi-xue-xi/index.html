@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="文本数据读取, lab of ML">
+    <meta name="keywords" content="sklearn中的机器学习, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>文本数据读取 | lab of ML</title>
+    <title>sklearn中的机器学习 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">文本数据读取</h1>
+                    <h1 class="description center-align post-title">sklearn中的机器学习</h1>
                 </div>
             </div>
         </div>
@@ -385,25 +385,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                <span class="chip bg-color">数据预处理</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                数据预处理
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -412,7 +399,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-04-21
+                    2024-05-10
                 </div>
                 
 
@@ -421,14 +408,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    573
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -456,80 +443,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>属于数据预处理的范畴，而文本数据读取是自然语言的第一步</p>
-<p>本章有四个知识点</p>
-<p>1.txt文本数据的读写</p>
-<p>2.CSV以及Excel文本数据的读写</p>
-<p>3.更多的DataFrame的操作</p>
-<p>4.对大规模数据的压缩</p>
-<p>一.txt文本数据的读写</p>
-<p>a. Python内置函数open()和write()可以实现对txt文本的读取或写入操作</p>
-<p>   open(“文件路径”,”读写模式”,encoding&#x3D;”编码格式”)</p>
-<p>文件路径:一般为绝对路径，因为数据就放在程序的文件夹中</p>
-<p>读写模式: 通俗讲就是对文件进行如何的操作,以下是常用的模式</p>
-<ol>
-<li><p>r:读取文件，文件不存在会报错<br>rb:读取二进制文件,文件不存在会报错<br>r+:可读可写，文件不存在会报错，写入操作时会覆盖原文件。</p>
-</li>
-<li><p>w:写入文件,若文件不存在则会先创建再写入，存在则覆盖原文件<br>wb:写入二进制文件，若文件不存在则会先创建再写入，存在则覆盖原文件<br>w+:可读可写，文件不存在则先创建，若存在则会覆盖。</p>
-</li>
-<li><p>a:写入文件，若文件不存在则会先创建再写入，存在不会覆盖原文件，会在源文件后续写。<br>a+:可读可写，文件不存在会先创建，若不存在则不会覆盖，在文件中继续写入内容。</p>
-</li>
-</ol>
-<p>编码格式: 一般用 utf-8 </p>
-<p>注：utf-8（8 位元，Universal Character Set&#x2F;Unicode Transformation Format）是针对 Unicode 的一种可变长度字符编码。它可以用来表示 Unicode 标准中的任何字符，而且其编码中的第一个字节仍与 ASCII 相容，使得原来处理 ASCII 字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-<p>b.read(),readlines(),readline()的区别</p>
-<p>1)若</p>
-<p>   f&#x3D;open(“file_path”,”w”,encoding&#x3D;”utf-8”)</p>
-<p>则用<br>   a&#x3D;f.read()  #读取整个文件存放到一个str变量中，若文件过大则无法使用该方法<br>   b&#x3D;f.readline() #每次只读取文件的一行，将每一行读到的数据存放到一个str变量中，可在文件过大时使用<br>   c&#x3D;f.readlines()  #按行读取整个文件内容，并将内容存放到一个list中<br>调用函数。</p>
-<p>2)type(a)是str   type(b)是str type(c)是list</p>
-<p>3)readline()方法</p>
-<p>   f &#x3D; open(“poem.txt”,”r”, encoding&#x3D;”utf-8”)<br>   while True:<br>      poem_line &#x3D; f.readline()<br>      if poem_line:<br>      print(type(poem_line), poem_line)  # 分次返回每一$行<br>   else:<br>      break</p>
-<p>c. write()</p>
-<p>   f.write(“内容”)<br>在open()函数中已经确定了写入内容的模式</p>
-<p>二.CSV及Excel文本数据的读写</p>
-<p>基于pandas对不同类型的文件数据进行操作</p>
-<p>先导入库<br>   import pandas as pd</p>
-<p>传入数据</p>
-<p>   df&#x3D;pd.DataFrame(data)</p>
-<p>一些对数据集的操作</p>
-<p>   df&#x3D;df.T #将数据集进行转置</p>
-<p>   df.to_csv(“数据集名称.csv”,encoding&#x3D;’utf-8’) #将df的内容保存在csv文件内</p>
-<p>用read_csv()读取刚生成的文件</p>
-<p>   df&#x3D;pd.read_csv(“刚保存文件的绝对路径”,index_col&#x3D;0) #index_col&#x3D;0 表示将第一列作为索引</p>
-<p>读写的更多操作:</p>
-<p>保存</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">"name.xlsx"</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>to_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>读取</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_json<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_html<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_sql<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pd<span class="token punctuation">.</span>read_pickle<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>评估指标有<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>线性回归<br>一.LinearRefression()<br>step1</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.linear_model import LinearRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>step2</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型实例化
+model&#x3D;LinearRegression()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>step3</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型进行训练
+model.fit(X_train,y_train)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>step4</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行预测
+y_pred&#x3D;model.predict(X_test)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>step4</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行模型测评
+accuracy&#x3D;accuracy_score(y_train,y_pred)
+precision&#x3D;precision_score(y_train,y_pred)
+recall&#x3D;recall_score(y_train,y_pred)
+f1&#x3D;f1_score(y_train,y_pred)
+#其中precision,recall用来评估二分类模型
+#f1综合了precision,recall的评估方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>逻辑回归<br>二.LogisticRegression()<br>导入相应库</p>
+<pre class="line-numbers language-pyhon3" data-language="pyhon3"><code class="language-pyhon3">from sklearn.linear_model import LogisticRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">model&#x3D;LogisticRegression()
+model.fit(X_train,y_train)
+y_pred&#x3D;model.predict(X_test)
+accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>决策树<br>三.DecisionTreeClassifier()<br>先导入库</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#分类树
+from sklearn.tree import DecisionTreeClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">clf&#x3D;DecisionTreeClassifier()
+clf&#x3D;clf.fit(X_train,y_train)
+#第一种评测方法
+result&#x3D;clf.score(X_test,y_test)
+#第二种得出y_pred自己评测
+y_pred&#x3D;clf.predict(X_test)
+accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>DecisionTreeClassifier()相关参数<br>criterion&#x3D;’gini’,<br>splitter&#x3D;’best’,<br>max_depth&#x3D;None,<br>min_samples_split&#x3D;2,<br>min_samples_leaf&#x3D;1,<br>min_weight_fraction_leaf&#x3D;0.0,<br>max_features&#x3D;None,<br>random_state&#x3D;None,<br>max_leaf_nodes&#x3D;None,<br>min_impurity_decrease&#x3D;0.0,<br>min_impurity_split&#x3D;None,<br>class_weight&#x3D;None,<br>presort&#x3D;False<br><code>重要参数说明</code><br>criterion 决定不纯度(不确定性)计算方法,sklearn提供了两种方法<br>1)entropy,使用信息熵(Entropy)<br>2)gini,使用基尼系数<br>不纯度<code>越低</code>,其<code>拟合效果越好</code>。<br>random_state 种子参数，若为实数则保证模型稳定，每运行一次，所选取的特征不变<br><code>剪枝参数</code><br>不加以限制的情况下(参数都设定为默认情况),一棵决策树会生长到衡量不纯度指标最优的情况下,或者没有更多特征可用，这样往往会<code>过拟合</code>,即<code>在训练集上表现优秀,但在测试集的情况下表示很糟糕</code>。</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>随机森林<br>随机森林即就是将多个决策树聚集在一起的<code>集成学习</code>。<br>四.RandomForestClassifier()–随机森林分类<br>先导入对应模块</p>
+<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.ensemble import RandomForestClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重要参数<br>criterion 不纯度指标,有gini和entropy两种选择<br>max_depth 最大深度,超过最大深度的树枝都会被剪掉<br>min_samples_leaf<br>min_samples_split<br>max_features<br>min_impurity_decrease<br>n_estimator 基评估器数量，数值越大模型效果越好，但有一定的边界，计算时间也就越长。<br>K近邻<br>五.KNeighborsClassifier()<br>先导入库</p>
+<pre class="line-numbers language-none"><code class="language-none">from sklearn.neighbors import KNeighborsClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>关键参数<br>n_neighbors&#x3D;</p>
+<p>algorithm&#x3D;’auto’</p>
 
-<p>三.更多DataFrame操作</p>
-<p>1)loc[] 可以获得指定行和列 名称的数据<br>获取在”a”行”b”列的数据<br><code>df.loc[&quot;a&quot;,&quot;b&quot;]</code><br>直接根据列名获取,即获取”b”列的数据<br><code>df.loc[&quot;b&quot;]</code><br>获取多列数据，即获取”b”列和”c”列的数据<br><code>df.loc[[&quot;b&quot;,&quot;c&quot;]]</code></p>
-<p>2)iloc[] 获取某一行<br>操作格式</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span>行<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>列<span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>第一行所有列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获得1到3行</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获取0到2行，1,2,3列</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>3)在loc中使用条件限定<br>根据条件获取数据，如获取亚洲国家对应的数据。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>若需要满足多个条件，用 &amp; 连接即可。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"CONT"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"Asia"</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">"GDP"</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># 注意 &amp; 左右两边的条件要加上（），否则报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>4)直接应用 DataFrame 中的 plot() 函数可以对数值类型的列进行画图</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>也可以只选取其中的某部分感兴趣的数据进行画图。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">df<span class="token punctuation">[</span><span class="token string">"POP"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">.</span>bar<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -555,7 +514,7 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/">https://aibincultars.github.io/2024/04/21/wen-ben-shu-ju-du-qu/</a>
+                    <a href="https://aibincultars.github.io/2024/05/10/sklearn-zhong-de-ji-qi-xue-xi/">https://aibincultars.github.io/2024/05/10/sklearn-zhong-de-ji-qi-xue-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -592,11 +551,7 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                                    <span class="chip bg-color">数据预处理</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -642,13 +597,13 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/04/22/wen-ben-shu-ju-chu-li/">
+                <a href="/2024/05/12/tensorflow-lite/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="正则表达式(re库)">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="使用TFLite Model Maker完成看图识花APP">
                         
-                        <span class="card-title">正则表达式(re库)</span>
+                        <span class="card-title">使用TFLite Model Maker完成看图识花APP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -659,14 +614,14 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
+                            <a href="/categories/tensorflow-lite/" class="post-category">
+                                    tensorflow-lite
                                 </a>
                             
                             
@@ -680,16 +635,16 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/21/wen-ben-shu-ju-du-qu/">
+                <a href="/2024/05/10/sklearn-zhong-de-yi-xie-shu-ju-chu-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="文本数据读取">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="sklearn中的数据预处理">
                         
-                        <span class="card-title">文本数据读取</span>
+                        <span class="card-title">sklearn中的数据预处理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -700,28 +655,19 @@ pd<span class="token punctuation">.</span>read_pickle<span class="token punctuat
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" class="post-category">
-                                    数据预处理
+                            <a href="/categories/sklearn/" class="post-category">
+                                    sklearn
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">数据预处理</span>
-                    </a>
-                    
                 </div>
                 
             </div>

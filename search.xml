@@ -4,6 +4,127 @@
   
     
     <entry>
+      <title>gradio部署模型</title>
+      <link href="/2024/05/14/gradio-mo-xing-bu-shu/"/>
+      <url>/2024/05/14/gradio-mo-xing-bu-shu/</url>
+      
+        <content type="html"><![CDATA[<p>gradio目前只支持tensorflow 1.x版本,而tensorflow2 移除了Session的使用,在gradio源码中注释掉,gradio就可以应用到tensorflow2上了。</p><p>一.gradio的基本用法<br>1.gradio.Interface()</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tfmodel <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2<span class="token punctuation">.</span>MobileNetV2<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">'imagenet'</span><span class="token punctuation">)</span>io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">'imageupload'</span><span class="token punctuation">,</span>outputs<span class="token operator">=</span><span class="token string">'label'</span><span class="token punctuation">,</span>model_type<span class="token operator">=</span><span class="token string">'keras'</span><span class="token punctuation">,</span>model<span class="token operator">=</span>model<span class="token punctuation">)</span><span class="token triple-quoted-string string">'''创建界面对象输入方式 inputs 使用图片上传的方式输出方式 outputs 使用模型所对应的索引号模型类型 model_type 使用 keras模型传入上面定义的 MobileNet 模型'''</span>io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#该指令为启动指令</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后在终端</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">python quick_start<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>二.使用imagenet</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf<span class="token comment"># 导入 ImageNet 预训练的 MobileNetV2</span>model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2<span class="token punctuation">.</span>MobileNetV2<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">'imagenet'</span><span class="token punctuation">)</span><span class="token comment"># 定义输出为 gradio.outputs 对象，同时传入 imagenet 参数</span>outputs <span class="token operator">=</span> gradio<span class="token punctuation">.</span>outputs<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>label_names<span class="token operator">=</span><span class="token string">'imagenet1000'</span><span class="token punctuation">)</span><span class="token comment"># 创建界面对象</span>io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">"imageupload"</span><span class="token punctuation">,</span> outputs<span class="token operator">=</span>outputs<span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">"keras"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>model<span class="token punctuation">)</span><span class="token comment"># 启动服务</span>io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>三.使用手写输入</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf<span class="token comment"># 导入手写体识别模型</span>model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>models<span class="token punctuation">.</span>load_model<span class="token punctuation">(</span><span class="token string">'mnist_model.h5'</span><span class="token punctuation">)</span><span class="token comment"># 初始化一个手写输入的对象，flatten=True 表示将图片一维化</span>inp <span class="token operator">=</span> gradio<span class="token punctuation">.</span>inputs<span class="token punctuation">.</span>Sketchpad<span class="token punctuation">(</span>flatten<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token comment"># 创建界面对象</span>io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span>inp<span class="token punctuation">,</span> outputs<span class="token operator">=</span><span class="token string">'label'</span><span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">"keras"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>model<span class="token punctuation">)</span><span class="token comment"># 启动服务</span>io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>四.使用文本输入</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> gradio<span class="token comment"># 定义一个英文的大写转换函数</span><span class="token keyword">def</span> <span class="token function">upper</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">return</span> x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 创建界面对象时设置输入为文本输入框，模型类别为 Python 函数</span>io <span class="token operator">=</span> gradio<span class="token punctuation">.</span>Interface<span class="token punctuation">(</span>inputs<span class="token operator">=</span><span class="token string">"textbox"</span><span class="token punctuation">,</span> outputs<span class="token operator">=</span><span class="token string">"textbox"</span><span class="token punctuation">,</span> model<span class="token operator">=</span>upper<span class="token punctuation">,</span> model_type<span class="token operator">=</span><span class="token string">'pyfunc'</span><span class="token punctuation">)</span>io<span class="token punctuation">.</span>launch<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 模型部署应用 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tflite部署模型</title>
+      <link href="/2024/05/14/tflite-bu-shu-mo-xing/"/>
+      <url>/2024/05/14/tflite-bu-shu-mo-xing/</url>
+      
+        <content type="html"><![CDATA[<p>tensorflow lite是google推出的一个轻量级推理库,主要用于移动端。<br>知识点:<br>·转换Keras模型为tensorflow lite格式<br>·tensorflow lite权重量化<br>·tensorflow lite整数量化<br>·tensorflow liteFloat16量化<br>一.TensorFlow Lite模型转换<br>TensorFlow2中,用于将tensorflow模型转为tensorflow lite格式的API是<code>tf.lite.TFLiteConverter</code>,这个API包含了三种方法:</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from_keras_model,用于转换Keras模型from_saved_model,用于转换SavedModel模型from_concrete_functions,用于转换Tensorflow的Function<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import tensorflow as tf#导入tensorflow库model &#x3D; tf.keras.applications.mobilenet_v2.MobileNetV2(weights&#x3D;&#39;imagenet&#39;)#导入预训练模型，设置权重为&#39;imagenet&#39;converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)#加载模型tflite_model &#x3D; converter.convert()#转换模型格式open(&#39;converted_model.tflite&#39;,&#39;wb&#39;).writer(tflite_model)#保存为converted_model.tflite文件格式<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>基本用法(用图片数据来表示):</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#先准备数据from skimage import dataimport cv2import numpy as npfrom tensorflow.keras.applications.mobilenet_v2 import preprocess_input# 读取图片并预处理image &#x3D; data.chelsea()image &#x3D; cv2.resize(image, (224, 224))image &#x3D; np.expand_dims(image, 0)x &#x3D; preprocess_input(image)x.shape<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>用<code>tf.lite.Interpreter</code>方法来读取模型文件,并进行预测:</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from tensorflow.keras.applications.mobilenet_v2 import decode_predictions#先导入库def pred_fn(filename):#构建预测函数    interpreter &#x3D; tf.lite.Interpreter(model_path&#x3D;filename)    #从文件中加载tflite模型    interpreter.allocate_tensors()    #分配张量    input_details &#x3D; interpreter.get_input_details()    #获得输入向量    output_details &#x3D; interpreter.get_output_details()    #获得输出向量    interpreter.set_tensor(input_details[0][&#39;index&#39;],x)    #张量填充    interpreter.invoke()    #运行推理    results &#x3D; interpreter.get_tensor(output_details[0][&#39;index&#39;])    #获取了张量值    pred &#x3D; decode_prediction(results)    #获得了对应标签    return predpred_fn(&#39;converd_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>上面代码的工作主要分为了初始化和推理,以下是对tensorflow lite的优化和加速</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"># 直接从 tf.lite 中获取 Interpreterinterpreter &#x3D; tf.lite.Interpreter(model_path&#x3D;&#39;converted_model.tflite&#39;)interpreter.allocate_tensors()# 获取输入和输出张量input_details &#x3D; interpreter.get_input_details()output_details &#x3D; interpreter.get_output_details()# 张量填充interpreter.set_tensor(input_details[0][&#39;index&#39;], x)# 运行推理interpreter.invoke()# 获取张量值results &#x3D; interpreter.get_tensor(output_details[0][&#39;index&#39;])# 获取对应标签pred &#x3D; decode_predictions(results)pred<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>模型量化:<br>将<code>数据格式</code>降低或者增加，以适配部署的平台。<br>其中有<code>权重量化</code>,其适用于CPU场景,缩小4倍，加速2-3倍<br><code>整数量化</code>,其适用于CPU,EdgeTPU场景,缩小4倍,加速3倍以上<br><code>Float16量化</code>,适用于GPU或者CPU,缩小2倍<br>1.权重量化<br>将权重转换为8位精度</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">weight_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)#使用TFLiteConverter加载模型weight_converter.optimizations &#x3D; [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]#使用optimizations对输出大小进行优化tflite_weight_model &#x3D; weight_converter.convert()open(&#39;weight_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_weight_model)#转换模型并且保存<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>转换完成后就可以使用上面的图片进行测试了</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">pred_fn(&#39;weight_converted_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>整数量化:<br>将模型的<code>权重和激活</code>转换为8位整数<br>需要一个具有<code>代表性的数据集</code></p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"># 生成代表性的数据集，在实际中可能需要部分或者全部的训练数据dataset &#x3D; tf.data.Dataset.from_tensor_slices((x)).batch(1)def representative_dataset_gen():  for input_value in dataset.take(1):    yield [input_value]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>使用<code>量化转换模型</code></p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#读取模型integer_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)#使用optimizations对输出大小优化inter_converter.optimizations &#x3D; [tf.lite.Optimize.DEFAULT]#指定代表性的数据集integer_converter.representative_dataset &#x3D; representative_dataset_gen#转换并保存tflite_integer_model &#x3D; integer_converter.convert()open(&#39;integer_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_integer_model)#预测pred_fn(&#39;integer_converted_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>Float16量化:<br>将<code>权重值</code>转换为<code>16bit浮点值</code>,这样可将模型尺寸减小2倍</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#使用tf.lite.TFLiteConverter加载模型  float16_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)#使用optimizations对输出大小优化,同时指定float16为目标设备上的支持类型float16_converter.optimizations &#x3D; [tf.lite.Optimiza.DEFAULT]float16_converter.target_spec.supported_types &#x3D; [tf.float16]#转换并保存tflite_float16_model &#x3D; float16_converter.convert()open(&#39;float16_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_float_model)#预测pred_fn(&#39;tflite_float16_model&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 模型部署应用 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ONNX部署模型</title>
+      <link href="/2024/05/12/onnx-bu-shu-mo-xing/"/>
+      <url>/2024/05/12/onnx-bu-shu-mo-xing/</url>
+      
+        <content type="html"><![CDATA[<p>对ONNX的通俗理解是 模型部署前统一的中间格式,不同的框架如<code>pytorch</code>,<code>tensorflow</code>等框架训练后保存的模型，<br>统一转为ONNX的格式，这样方便部署到各种各样的平台上,如PC,单片机，手机等等。</p><p>一.模型应用的流程</p><p>  保存训练好的模型-&gt;转换为ONNX格式-&gt;用ONNX RUNTIME进行推理分析并且部署</p><p>二.ONNX<br>1.torch.onnx.export()<br>pytorch中自带了onnx,下面用代码展示如何将pytorch模型转换为onnx格式的模型<br>先导入库</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import torchimport torch.onnxfrom torch import nnimport numpy as npimport cv2import os<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">x &#x3D; torch.randn(1,3,256,256) #随机生成格式和照片一样的张量with torch.no_grad():#不更新梯度    torch.onnx.export(model,                      x,                      &#39;cnn.onnx&#39;,                      opset_version&#x3D;11,                      input_names&#x3D;[&#39;input&#39;],                      output_names&#x3D;[&#39;output&#39;] )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>其中torch.onnx.export是pytorch自带的格式转换函数<br>第一个参数model,需要传入<code>已经实例化好的原模型</code><br>第二个参数x,需要传入一个和模型输入数据<code>格式相同</code>的一个随机数据,这样模型就会知道数据的格式(形式)是怎样的了。<br>第三个参数表示保存模型的名字为’xxx.onnx’<br>opset_version表示ONNX算子集的版本,此处设为11<br>剩下两个参数为输入输出的名字，要自己设置好</p><p>2.onnx.checker.check_model()<br>onnx_load<br>若上述代码成果运行,则会生成一个onnx模型,目录下会新增一个’cnn.onnx’的模型文件,我们需要检测一下模型文件是否正确。</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import onnxonnx_model&#x3D;onnx_load(&#39;cnn.onnx&#39;)#用于加载模型文件try:    onnx.checker.check_model(onnx_model)#用于检测模型文件是否正确except Exception:#捕获异常值Exception    print(&#39;Model incorrect&#39;)else:    print(&#39;Model correct&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3.onnxruntime<br>我们将pytorch编写的模型转换成onnx模型后,检验正确性通过后，利用onnxruntime运行模型</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import onnxruntimeort_session &#x3D; onnxruntime.InferenceSession(&#39;cnn.onnx&#39;)#获取了一个ONNX Runtime推理器ort_inputs &#x3D; &#123;&#39;input&#39;: input_img&#125; #前面在torch.onnx.export命名了输入名为&#39;input&#39;ort_outputs &#x3D; ort_session.run([&#39;output&#39;],ort_inputs)[0]#run方法用于模型推理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意对输入输出数据的处理,在对格式转换阶段,要确认输入的x的格式,要确保后续input的格式与x相同例如x.shape&#x3D;[256,1],则input的输入也要为[256,1],可以用np.pad()来完成,主要是元素个数要相同。要紧紧关注题提供的代码。<br>np.pad(input,(pad_width(axis&#x3D;0),pad_width(axis&#x3D;1))),其中axis&#x3D;0是行填充,aixs&#x3D;1是列填充</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 模型应用部署 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用TFLite Model Maker完成看图识花APP</title>
+      <link href="/2024/05/12/tensorflow-lite/"/>
+      <url>/2024/05/12/tensorflow-lite/</url>
+      
+        <content type="html"><![CDATA[<p>tensorflow-lite在小型设备上进行识别</p><p>TFLite Micro:是在MCU和移动统一的框架</p><p>一.TFLite Model Maker<br>    TFLite中的一个迁移学习的python库,无需机器学习背景就可以将最前沿模型应用到自己的数据集上。<br>Model Maker可以应用于<code>图像分类</code>,<code>文字分类</code>,<code>文本问答</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tensorflow-lite </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sklearn中的机器学习</title>
+      <link href="/2024/05/10/sklearn-zhong-de-ji-qi-xue-xi/"/>
+      <url>/2024/05/10/sklearn-zhong-de-ji-qi-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<p>评估指标有<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>线性回归<br>一.LinearRefression()<br>step1</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.linear_model import LinearRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>step2</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型实例化model&#x3D;LinearRegression()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>step3</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型进行训练model.fit(X_train,y_train)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>step4</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行预测y_pred&#x3D;model.predict(X_test)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>step4</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行模型测评accuracy&#x3D;accuracy_score(y_train,y_pred)precision&#x3D;precision_score(y_train,y_pred)recall&#x3D;recall_score(y_train,y_pred)f1&#x3D;f1_score(y_train,y_pred)#其中precision,recall用来评估二分类模型#f1综合了precision,recall的评估方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>逻辑回归<br>二.LogisticRegression()<br>导入相应库</p><pre class="line-numbers language-pyhon3" data-language="pyhon3"><code class="language-pyhon3">from sklearn.linear_model import LogisticRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">model&#x3D;LogisticRegression()model.fit(X_train,y_train)y_pred&#x3D;model.predict(X_test)accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>决策树<br>三.DecisionTreeClassifier()<br>先导入库</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#分类树from sklearn.tree import DecisionTreeClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">clf&#x3D;DecisionTreeClassifier()clf&#x3D;clf.fit(X_train,y_train)#第一种评测方法result&#x3D;clf.score(X_test,y_test)#第二种得出y_pred自己评测y_pred&#x3D;clf.predict(X_test)accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>DecisionTreeClassifier()相关参数<br>criterion&#x3D;’gini’,<br>splitter&#x3D;’best’,<br>max_depth&#x3D;None,<br>min_samples_split&#x3D;2,<br>min_samples_leaf&#x3D;1,<br>min_weight_fraction_leaf&#x3D;0.0,<br>max_features&#x3D;None,<br>random_state&#x3D;None,<br>max_leaf_nodes&#x3D;None,<br>min_impurity_decrease&#x3D;0.0,<br>min_impurity_split&#x3D;None,<br>class_weight&#x3D;None,<br>presort&#x3D;False<br><code>重要参数说明</code><br>criterion 决定不纯度(不确定性)计算方法,sklearn提供了两种方法<br>1)entropy,使用信息熵(Entropy)<br>2)gini,使用基尼系数<br>不纯度<code>越低</code>,其<code>拟合效果越好</code>。<br>random_state 种子参数，若为实数则保证模型稳定，每运行一次，所选取的特征不变<br><code>剪枝参数</code><br>不加以限制的情况下(参数都设定为默认情况),一棵决策树会生长到衡量不纯度指标最优的情况下,或者没有更多特征可用，这样往往会<code>过拟合</code>,即<code>在训练集上表现优秀,但在测试集的情况下表示很糟糕</code>。</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>随机森林<br>随机森林即就是将多个决策树聚集在一起的<code>集成学习</code>。<br>四.RandomForestClassifier()–随机森林分类<br>先导入对应模块</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.ensemble import RandomForestClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>重要参数<br>criterion 不纯度指标,有gini和entropy两种选择<br>max_depth 最大深度,超过最大深度的树枝都会被剪掉<br>min_samples_leaf<br>min_samples_split<br>max_features<br>min_impurity_decrease<br>n_estimator 基评估器数量，数值越大模型效果越好，但有一定的边界，计算时间也就越长。<br>K近邻<br>五.KNeighborsClassifier()<br>先导入库</p><pre class="line-numbers language-none"><code class="language-none">from sklearn.neighbors import KNeighborsClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>关键参数<br>n_neighbors&#x3D;</p><p>algorithm&#x3D;’auto’</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sklearn中的数据预处理</title>
+      <link href="/2024/05/10/sklearn-zhong-de-yi-xie-shu-ju-chu-li/"/>
+      <url>/2024/05/10/sklearn-zhong-de-yi-xie-shu-ju-chu-li/</url>
+      
+        <content type="html"><![CDATA[<p>model_selection模块<br>一.train_test_split()<br>1.导入相关模块</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.model_selection import train_test_spilt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.用法</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">X_train, X_test, y_train, y_test &#x3D; train_test_split(   train_data,   train_target,   test_size,   random_state,   shuffle)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>3.参数<br>a.train_data: 传入你想分割的数据集<br>b.train_target: 传入你想分割的标签<br>注意:train_data要和train_target的<code>行</code>对应。<br>c.test_size:分割比例默认为0.25,即测试集占完整数据集的比例<br>通俗地讲，即表示测试集大小比例。<br>d.random_state: 默认值为None,随机数种子,设置成定值意味着对于同一数据集来讲，只有第一次数据分割是随机的，之后都和第一次分割一样。<br>e.shuffle: bool值,是否在分割前打乱数据集</p><p>preprocessing模块<br>二.sclae()标准化<br>1.导入库</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.preprocessing import scale<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.用法<br>使用原因:某些特征的方差过大，会主导<code>目标函数</code>从而使参数估计其无法正确的去学习其他特征<br>使用过程:去均值的中心化(均值变为0),方差的规模化(方差变为1)</p><pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"># x 是一个numpy数组x_scale&#x3D;scale(x)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>三.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> sklearn </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自编码器</title>
+      <link href="/2024/05/07/zi-bian-ma-qi/"/>
+      <url>/2024/05/07/zi-bian-ma-qi/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Rnn和lstm神经网络的应用</title>
       <link href="/2024/05/06/rnn-he-lstm-shen-jing-wang-luo-de-ying-yong/"/>
       <url>/2024/05/06/rnn-he-lstm-shen-jing-wang-luo-de-ying-yong/</url>
@@ -67,7 +188,7 @@
     
     
     <entry>
-      <title>评估指标(sklearn)</title>
+      <title>评估方法</title>
       <link href="/2024/04/25/ping-gu-zhi-biao/"/>
       <url>/2024/04/25/ping-gu-zhi-biao/</url>
       
@@ -76,7 +197,7 @@
       
       <categories>
           
-          <category> 评估模型的方法 </category>
+          <category> sklearn </category>
           
       </categories>
       
