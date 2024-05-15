@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="评估方法, lab of ML">
+    <meta name="keywords" content="sklearn中的模型评估, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>评估方法 | lab of ML</title>
+    <title>sklearn中的模型评估 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">评估方法</h1>
+                    <h1 class="description center-align post-title">sklearn中的模型评估</h1>
                 </div>
             </div>
         </div>
@@ -395,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/sklearn/" class="post-category">
-                                sklearn
+                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0/" class="post-category">
+                                模型评估
                             </a>
                         
                     </div>
@@ -417,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    353
+                    722
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -452,17 +452,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>“评估指标” 用来评价机器学习模型的性能 </p>
-<p>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)</p>
-<p>指标的英文-“metrics”</p>
-<p>sklearn库中的评估指标 </p>
-<p>1)accuracy-准确率</p>
-<p>a. 模型预测正确的样本 占 总样本数 的比例,用于评估 分类模型 的性能</p>
-<p>b.使用函数 </p>
+                <p>“评估指标” 用来评价机器学习模型的性能<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)<br>指标的英文-“metrics”<br>sklearn库中的评估指标<br>1)accuracy_score-准确率<br>a. 模型预测<code>正确的样本</code>占<code>总样本数</code>的比例,用于评估<code>分类模型</code>的性能<br>b.使用函数 </p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">
 sklearn<span class="token punctuation">.</span>metrics<span class="token punctuation">.</span>accuracy_score
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
 <p>c.示例代码</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">
 <span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score
@@ -476,20 +469,13 @@ y_pred <span class="token operator">=</span> <span class="token punctuation">[</
 accuracy <span class="token operator">=</span> accuracy_score<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Accuracy:"</span><span class="token punctuation">,</span> accuracy<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>2)precision-精确率,recall-召回率</p>
-<p>a.precision和recall用来评估 二分类模型</p>
-<p>precision 衡量模型预测中为 正类的样本中实际为正类的比例</p>
-<p>recall 衡量 实际为正类的样本 被 正确预测 的正类比例</p>
-<p>b.使用函数</p>
+<p>2)precision_score-精确率,recall_score-召回率<br>a.precision和recall用来评估<code>二分类模型</code><br>precision 衡量模型预测中为<code>正类的样本</code>中<code>实际为正类的</code>比例<br>recall 衡量<code>实际为正类的样本</code>被<code>正确预测</code>的正类比例<br>b.使用函数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">
 sklearn<span class="token punctuation">.</span>metrics<span class="token punctuation">.</span>precision_score
 
-sklearn<span class="token punctuation">.</span>metrics<span class="token punctuation">.</span>recall_score
-
-c<span class="token punctuation">.</span>示例代码
-```python
-<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> precision_score<span class="token punctuation">,</span> recall_score
+sklearn<span class="token punctuation">.</span>metrics<span class="token punctuation">.</span>recall_score<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>c.示例代码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> precision_score<span class="token punctuation">,</span> recall_score
 
 <span class="token comment"># 真实标签</span>
 y_true <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
@@ -502,13 +488,9 @@ precision <span class="token operator">=</span> precision_score<span class="toke
 
 <span class="token comment"># 计算召回率</span>
 recall <span class="token operator">=</span> recall_score<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Recall:"</span><span class="token punctuation">,</span> recall<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>3)f1_score - F1分数</p>
-<p>a.f1分数 综合考虑了precision和recall的评估指标,用于平衡二者之间的权衡关系</p>
-<p>b.使用函数</p>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Recall:"</span><span class="token punctuation">,</span> recall<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3)f1_score - F1分数<br>a.f1分数 综合考虑了precision和recall的评估指标,用于平衡二者之间的权衡关系<br>b.使用函数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">sklearn<span class="token punctuation">.</span>metrics<span class="token punctuation">.</span>f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>c.示例代码</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> f1_score
 
@@ -521,6 +503,35 @@ y_pred <span class="token operator">=</span> <span class="token punctuation">[</
 f1 <span class="token operator">=</span> f1_score<span class="token punctuation">(</span>y_true<span class="token punctuation">,</span> y_pred<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"F1 Score:"</span><span class="token punctuation">,</span> f1<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>4)交叉验证<br>a.概述<br>用于<code>评估模型在未见过的数据</code>上的性能统计方法,可以<code>避免过拟合</code>,相对<code>客观的判断</code>模型的泛化能力。在交叉验证中，我们将数据集(训练集,不包含验证集)等量划分成几个小子集，然后对不同子集运行建模过程。<br>b.什么时候使用交叉验证?<br>·当<code>数据较少</code>时,可以用交叉验证<code>cross-validation</code><br>·当<code>数据较大</code>时,可以用<code>简单验证法</code>,即就是讲样本数据随机分为两部分(如80%训练集和20%验证集),若用交叉验证则会耗时过长。<br>·若模型需要几分钟或更少的时间运行，则可能值得使用交叉验证。<br>用随机森林模型举例</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> RandomForestRegressor
+<span class="token comment">#导入随机森林回归</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> cross_val_score
+<span class="token comment">#导入交叉验证模组</span>
+
+data<span class="token operator">=</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'filename.csv'</span><span class="token punctuation">)</span>
+<span class="token comment">#读取数据</span>
+X<span class="token operator">=</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'column_1'</span><span class="token punctuation">,</span><span class="token string">'column_2'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+Y<span class="token operator">=</span>data<span class="token punctuation">[</span><span class="token string">'column_3'</span><span class="token punctuation">]</span>
+<span class="token comment">#读取数据</span>
+
+model<span class="token operator">=</span>RandomForestRegressor<span class="token punctuation">(</span>m_estimator<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment">#对模型实例化</span>
+
+scores <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token operator">*</span>cross_val_score<span class="token punctuation">(</span>model<span class="token punctuation">,</span>X<span class="token punctuation">,</span>y<span class="token punctuation">,</span>cv<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>socring<span class="token operator">=</span><span class="token string">'neg_mean_absolute_error'</span><span class="token punctuation">)</span>
+
+<span class="token comment">#前面加上-1的系数,因为在sklearn的计算中MAE是负数</span>
+<span class="token comment">#cv表示折叠的次数</span>
+<span class="token comment">#model代表 实例化的模型</span>
+<span class="token comment">#X,y代表数据集</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'MAE scores:\n'</span><span class="token punctuation">,</span>scores<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">MAE scores<span class="token punctuation">:</span>
+ <span class="token punctuation">[</span><span class="token number">301628.7893587</span>  <span class="token number">303164.4782723</span>  <span class="token number">287298.331666</span>   <span class="token number">236061.84754543</span>   <span class="token number">260383.45111427</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>从分数矩阵中，可以观察到实验四的MAE值最小，即该子集模型的拟合效果最好。</p>
+
                 
             </div>
             <hr/>
@@ -881,7 +892,7 @@ f1 <span class="token operator">=</span> f1_score<span class="token punctuation"
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.8k</span>&nbsp;字
+                class="white-color">8.6k</span>&nbsp;字
             
             
             

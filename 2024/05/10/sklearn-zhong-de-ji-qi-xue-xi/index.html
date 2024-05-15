@@ -392,6 +392,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/" class="post-category">
+                                机器学习算法
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -408,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    573
+                    990
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -443,51 +452,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>评估指标有<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>线性回归<br>一.LinearRefression()<br>step1</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.linear_model import LinearRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>一.机器学习算法分类<br>1.<code>监督学习</code>：有X_data和X_label,可以通过经X_data和X_label训练后的模型，放入y_test来预测y_label,常见的算法有:<code>线性回归</code>，<code>逻辑回归</code>，支持向量机，<code>随机森林</code>，<code>朴素贝叶斯</code>等等<br>2.<code>无监督学习</code>:只有data,没有人为的标注,通过算法本身发现数据的规律和结构,常见的无监督学习算法有:<code>k-means</code>,<code>主成成分分析(降维)</code><br>二.评估指标<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)<br>其中precision,recall用来评估二分类模型<br>f1综合了precision,recall的评估方法</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>三.监督学习<br>1.<code>线性回归</code>–预测趋势<br>sklearn.linear_model.LinearRegression()<br>step1</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LinearRegression
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split<span class="token comment">#数据处理库，也算是一种简单验证法</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score
+<span class="token comment">#训练评估库</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>step2</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型实例化
-model&#x3D;LinearRegression()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#对模型实例化</span>
+model<span class="token operator">=</span>LinearRegression<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>step3</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#对模型进行训练
-model.fit(X_train,y_train)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#对模型进行训练</span>
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>train_data<span class="token punctuation">,</span>train_label<span class="token punctuation">,</span>test_size<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">,</span>random_state<span class="token operator">=</span><span class="token number">22</span><span class="token punctuation">,</span>shuffle<span class="token operator">=</span>Flase<span class="token punctuation">)</span>
+<span class="token comment">#shuffle表示是否打乱</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>step4</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行预测
-y_pred&#x3D;model.predict(X_test)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#进行预测</span>
+y_pred<span class="token operator">=</span>model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>step4</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#进行模型测评
-accuracy&#x3D;accuracy_score(y_train,y_pred)
-precision&#x3D;precision_score(y_train,y_pred)
-recall&#x3D;recall_score(y_train,y_pred)
-f1&#x3D;f1_score(y_train,y_pred)
-#其中precision,recall用来评估二分类模型
-#f1综合了precision,recall的评估方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>逻辑回归<br>二.LogisticRegression()<br>导入相应库</p>
-<pre class="line-numbers language-pyhon3" data-language="pyhon3"><code class="language-pyhon3">from sklearn.linear_model import LogisticRegression<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">model&#x3D;LogisticRegression()
-model.fit(X_train,y_train)
-y_pred&#x3D;model.predict(X_test)
-accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>决策树<br>三.DecisionTreeClassifier()<br>先导入库</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#分类树
-from sklearn.tree import DecisionTreeClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">clf&#x3D;DecisionTreeClassifier()
-clf&#x3D;clf.fit(X_train,y_train)
-#第一种评测方法
-result&#x3D;clf.score(X_test,y_test)
-#第二种得出y_pred自己评测
-y_pred&#x3D;clf.predict(X_test)
-accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#进行模型测评</span>
+accuracy<span class="token operator">=</span>accuracy_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
+precision<span class="token operator">=</span>precision_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
+recall<span class="token operator">=</span>recall_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
+f1<span class="token operator">=</span>f1_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
+<span class="token comment">#其中precision,recall用来评估二分类模型</span>
+<span class="token comment">#f1综合了precision,recall的评估方法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.<code>逻辑回归</code>–0&#x2F;1分类<br>sklearn.linear_model.LogisticRegression()<br>导入相应库</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>linear_model <span class="token keyword">import</span> LogisticRegression
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">model<span class="token operator">=</span>LogisticRegression<span class="token punctuation">(</span><span class="token punctuation">)</span>
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>train_data<span class="token punctuation">,</span>train_label<span class="token punctuation">,</span>test_size<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+y_pred<span class="token operator">=</span>model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+accuracy<span class="token operator">=</span>accuracy_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>3.<code>决策树</code>–有大量数据的时候会有<code>过拟合</code><br>sklearn.tree.DecisionTreeClassifier()–<code>决策树中的分类树</code><br>sklearn.tree.DecisionTreeRegressor()–<code>决策树中的分类树</code><br>1)分类树</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#分类树</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeClassifier
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selcetion <span class="token keyword">import</span> train_test_split
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score
+<span class="token comment">#对模型进行实例化</span>
+clf<span class="token operator">=</span>DecisionTreeClassifier<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">#分割数据</span>
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test<span class="token operator">=</span>train_test_split<span class="token punctuation">(</span>train_data<span class="token punctuation">,</span>train_label<span class="token punctuation">,</span>test_size<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+clf<span class="token operator">=</span>clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+<span class="token comment">#第一种评测方法</span>
+result<span class="token operator">=</span>clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
+<span class="token comment">#第二种得出y_pred自己评测</span>
+y_pred<span class="token operator">=</span>clf<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+accuracy<span class="token operator">=</span>accuracy_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2)回归树</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#回归树</span>
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>tree <span class="token keyword">import</span> DecisionTreeRegressor
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score
+
+<span class="token comment">#对模型实例化</span>
+clf<span class="token operator">=</span>DecisionTreeRegressor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+X_train<span class="token punctuation">,</span>X_test<span class="token punctuation">,</span>y_train<span class="token punctuation">,</span>y_test<span class="token operator">=</span>train_test_split<span class="token punctuation">(</span>train_data<span class="token punctuation">,</span>train_label<span class="token punctuation">,</span>test_size<span class="token operator">=</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+clf<span class="token operator">=</span>clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span>y_train<span class="token punctuation">)</span>
+y_pred<span class="token operator">=</span>clf<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>X_test<span class="token punctuation">)</span>
+<span class="token comment">#测试集在模型上的表现</span>
+score<span class="token operator">=</span>clf<span class="token punctuation">.</span>score<span class="token punctuation">(</span>X_test<span class="token punctuation">,</span>y_test<span class="token punctuation">)</span>
+<span class="token comment">#自己评估</span>
+accuracy_score<span class="token operator">=</span>accuracy_score<span class="token punctuation">(</span>y_train<span class="token punctuation">,</span>y_pred<span class="token punctuation">)</span>
+<span class="token comment">#若将回归树拟合的函数可视化，将不是平滑曲线，而是分段函数的形式。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>DecisionTreeClassifier()相关参数<br>criterion&#x3D;’gini’,<br>splitter&#x3D;’best’,<br>max_depth&#x3D;None,<br>min_samples_split&#x3D;2,<br>min_samples_leaf&#x3D;1,<br>min_weight_fraction_leaf&#x3D;0.0,<br>max_features&#x3D;None,<br>random_state&#x3D;None,<br>max_leaf_nodes&#x3D;None,<br>min_impurity_decrease&#x3D;0.0,<br>min_impurity_split&#x3D;None,<br>class_weight&#x3D;None,<br>presort&#x3D;False<br><code>重要参数说明</code><br>criterion 决定不纯度(不确定性)计算方法,sklearn提供了两种方法<br>1)entropy,使用信息熵(Entropy)<br>2)gini,使用基尼系数<br>不纯度<code>越低</code>,其<code>拟合效果越好</code>。<br>random_state 种子参数，若为实数则保证模型稳定，每运行一次，所选取的特征不变<br><code>剪枝参数</code><br>不加以限制的情况下(参数都设定为默认情况),一棵决策树会生长到衡量不纯度指标最优的情况下,或者没有更多特征可用，这样往往会<code>过拟合</code>,即<code>在训练集上表现优秀,但在测试集的情况下表示很糟糕</code>。</p>
 <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>随机森林<br>随机森林即就是将多个决策树聚集在一起的<code>集成学习</code>。<br>四.RandomForestClassifier()–随机森林分类<br>先导入对应模块</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from sklearn.ensemble import RandomForestClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>重要参数<br>criterion 不纯度指标,有gini和entropy两种选择<br>max_depth 最大深度,超过最大深度的树枝都会被剪掉<br>min_samples_leaf<br>min_samples_split<br>max_features<br>min_impurity_decrease<br>n_estimator 基评估器数量，数值越大模型效果越好，但有一定的边界，计算时间也就越长。<br>K近邻<br>五.KNeighborsClassifier()<br>先导入库</p>
+<p>4.<code>随机森林</code>–将多个决策树聚集在一起的<code>集成学习</code><br>sklearn.ensemble.RandomForestClassifier()–随机森林分类<br>sklearn.ensemble.RandomForestRegressor()–随机森林回归<br>1)分类森林</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> RandomForestClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重要参数<br>criterion 不纯度指标,有gini和entropy两种选择<br>max_depth 最大深度,超过最大深度的树枝都会被剪掉<br>min_samples_leaf<br>min_samples_split<br>max_features<br>min_impurity_decrease<br>n_estimator 基评估器数量，数值越大模型效果越好，但有一定的边界，计算时间也就越长。<br>2)回归森林<br>二.无监督学习<br>5.<code>K近邻</code><br>KNeighborsClassifier()<br>先导入库</p>
 <pre class="line-numbers language-none"><code class="language-none">from sklearn.neighbors import KNeighborsClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>关键参数<br>n_neighbors&#x3D;</p>
 <p>algorithm&#x3D;’auto’</p>
+<p>6.<code>主成成分分析(降维算法)</code></p>
 
                 
             </div>
@@ -849,7 +889,7 @@ accuracy&#x3D;accuracy_score(y_train,y_pred)<span aria-hidden="true" class="line
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.8k</span>&nbsp;字
+                class="white-color">8.6k</span>&nbsp;字
             
             
             
