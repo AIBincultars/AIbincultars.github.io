@@ -417,7 +417,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    990
+                    992
                 </div>
                 
 
@@ -452,7 +452,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一.机器学习算法分类<br>1.<code>监督学习</code>：有X_data和X_label,可以通过经X_data和X_label训练后的模型，放入y_test来预测y_label,常见的算法有:<code>线性回归</code>，<code>逻辑回归</code>，支持向量机，<code>随机森林</code>，<code>朴素贝叶斯</code>等等<br>2.<code>无监督学习</code>:只有data,没有人为的标注,通过算法本身发现数据的规律和结构,常见的无监督学习算法有:<code>k-means</code>,<code>主成成分分析(降维)</code><br>二.评估指标<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)<br>其中precision,recall用来评估二分类模型<br>f1综合了precision,recall的评估方法</p>
+                <p>一.机器学习算法分类<br>1.<code>监督学习</code>：有X_data和X_label,可以通过经X_data和X_label训练后的模型，放入y_test来预测y_label,常见的算法有:<code>线性回归</code>，<code>逻辑回归</code>，支持向量机，<code>随机森林</code>，<code>朴素贝叶斯</code>，<code>k近邻</code>等等<br>2.<code>无监督学习</code>:只有data,没有人为的标注,通过算法本身发现数据的规律和结构,常见的无监督学习算法有:<code>k-means</code>,<code>主成成分分析(降维)</code><br>二.评估指标<br>常见的有准确率(accuracy),精确率(precision),召回率(recall),f1分数(F1 Score)<br>其中precision,recall用来评估二分类模型<br>f1综合了precision,recall的评估方法</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>metrics <span class="token keyword">import</span> accuracy_score<span class="token punctuation">,</span>precision_score<span class="token punctuation">,</span>recall_score<span class="token punctuation">,</span>f1_score<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>三.监督学习<br>1.<code>线性回归</code>–预测趋势<br>sklearn.linear_model.LinearRegression()<br>step1</p>
@@ -524,7 +524,7 @@ accuracy_score<span class="token operator">=</span>accuracy_score<span class="to
 <p>4.<code>随机森林</code>–将多个决策树聚集在一起的<code>集成学习</code><br>sklearn.ensemble.RandomForestClassifier()–随机森林分类<br>sklearn.ensemble.RandomForestRegressor()–随机森林回归<br>1)分类森林</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>ensemble <span class="token keyword">import</span> RandomForestClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>重要参数<br>criterion 不纯度指标,有gini和entropy两种选择<br>max_depth 最大深度,超过最大深度的树枝都会被剪掉<br>min_samples_leaf<br>min_samples_split<br>max_features<br>min_impurity_decrease<br>n_estimator 基评估器数量，数值越大模型效果越好，但有一定的边界，计算时间也就越长。<br>2)回归森林<br>二.无监督学习<br>5.<code>K近邻</code><br>KNeighborsClassifier()<br>先导入库</p>
-<pre class="line-numbers language-none"><code class="language-none">from sklearn.neighbors import KNeighborsClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>neighbors <span class="token keyword">import</span> KNeighborsClassifier<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>关键参数<br>n_neighbors&#x3D;</p>
 <p>algorithm&#x3D;’auto’</p>
 <p>6.<code>主成成分分析(降维算法)</code></p>
@@ -889,7 +889,7 @@ accuracy_score<span class="token operator">=</span>accuracy_score<span class="to
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.6k</span>&nbsp;字
+                class="white-color">9.3k</span>&nbsp;字
             
             
             

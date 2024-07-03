@@ -417,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    924
+                    855
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -453,93 +453,93 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>tensorflow lite是google推出的一个轻量级推理库,主要用于移动端。<br>知识点:<br>·转换Keras模型为tensorflow lite格式<br>·tensorflow lite权重量化<br>·tensorflow lite整数量化<br>·tensorflow liteFloat16量化<br>一.TensorFlow Lite模型转换<br>TensorFlow2中,用于将tensorflow模型转为tensorflow lite格式的API是<code>tf.lite.TFLiteConverter</code>,这个API包含了三种方法:</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from_keras_model,用于转换Keras模型
-from_saved_model,用于转换SavedModel模型
-from_concrete_functions,用于转换Tensorflow的Function<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import tensorflow as tf
-#导入tensorflow库
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from_keras_model<span class="token punctuation">,</span>用于转换Keras模型
+from_saved_model<span class="token punctuation">,</span>用于转换SavedModel模型
+from_concrete_functions<span class="token punctuation">,</span>用于转换Tensorflow的Function<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token comment">#导入tensorflow库</span>
 
-model &#x3D; tf.keras.applications.mobilenet_v2.MobileNetV2(weights&#x3D;&#39;imagenet&#39;)
-#导入预训练模型，设置权重为&#39;imagenet&#39;
+model <span class="token operator">=</span> tf<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2<span class="token punctuation">.</span>MobileNetV2<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">'imagenet'</span><span class="token punctuation">)</span>
+<span class="token comment">#导入预训练模型，设置权重为'imagenet'</span>
 
-converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)
-#加载模型
+converter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>TFLiteConverter<span class="token punctuation">.</span>from_keras_model<span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+<span class="token comment">#加载模型</span>
 
-tflite_model &#x3D; converter.convert()
-#转换模型格式
+tflite_model <span class="token operator">=</span> converter<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">#转换模型格式</span>
 
-open(&#39;converted_model.tflite&#39;,&#39;wb&#39;).writer(tflite_model)
-#保存为converted_model.tflite文件格式<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'converted_model.tflite'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>writer<span class="token punctuation">(</span>tflite_model<span class="token punctuation">)</span>
+<span class="token comment">#保存为converted_model.tflite文件格式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>基本用法(用图片数据来表示):</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#先准备数据
-from skimage import data
-import cv2
-import numpy as np
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#先准备数据</span>
+<span class="token keyword">from</span> skimage <span class="token keyword">import</span> data
+<span class="token keyword">import</span> cv2
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2 <span class="token keyword">import</span> preprocess_input
 
-# 读取图片并预处理
-image &#x3D; data.chelsea()
-image &#x3D; cv2.resize(image, (224, 224))
-image &#x3D; np.expand_dims(image, 0)
-x &#x3D; preprocess_input(image)
-x.shape<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 读取图片并预处理</span>
+image <span class="token operator">=</span> data<span class="token punctuation">.</span>chelsea<span class="token punctuation">(</span><span class="token punctuation">)</span>
+image <span class="token operator">=</span> cv2<span class="token punctuation">.</span>resize<span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+image <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> preprocess_input<span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+x<span class="token punctuation">.</span>shape<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用<code>tf.lite.Interpreter</code>方法来读取模型文件,并进行预测:</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">from tensorflow.keras.applications.mobilenet_v2 import decode_predictions
-#先导入库
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications<span class="token punctuation">.</span>mobilenet_v2 <span class="token keyword">import</span> decode_predictions
+<span class="token comment">#先导入库</span>
 
-def pred_fn(filename):
-#构建预测函数
+<span class="token keyword">def</span> <span class="token function">pred_fn</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment">#构建预测函数</span>
 
 
-    interpreter &#x3D; tf.lite.Interpreter(model_path&#x3D;filename)
-    #从文件中加载tflite模型
+    interpreter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>Interpreter<span class="token punctuation">(</span>model_path<span class="token operator">=</span>filename<span class="token punctuation">)</span>
+    <span class="token comment">#从文件中加载tflite模型</span>
 
-    interpreter.allocate_tensors()
-    #分配张量
+    interpreter<span class="token punctuation">.</span>allocate_tensors<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#分配张量</span>
 
-    input_details &#x3D; interpreter.get_input_details()
-    #获得输入向量
-    output_details &#x3D; interpreter.get_output_details()
-    #获得输出向量
-    interpreter.set_tensor(input_details[0][&#39;index&#39;],x)
-    #张量填充
-    interpreter.invoke()
-    #运行推理
-    results &#x3D; interpreter.get_tensor(output_details[0][&#39;index&#39;])
-    #获取了张量值
-    pred &#x3D; decode_prediction(results)
-    #获得了对应标签
-    return pred
-pred_fn(&#39;converd_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    input_details <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_input_details<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#获得输入向量</span>
+    output_details <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_output_details<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#获得输出向量</span>
+    interpreter<span class="token punctuation">.</span>set_tensor<span class="token punctuation">(</span>input_details<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'index'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>x<span class="token punctuation">)</span>
+    <span class="token comment">#张量填充</span>
+    interpreter<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#运行推理</span>
+    results <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_tensor<span class="token punctuation">(</span>output_details<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'index'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">#获取了张量值</span>
+    pred <span class="token operator">=</span> decode_prediction<span class="token punctuation">(</span>results<span class="token punctuation">)</span>
+    <span class="token comment">#获得了对应标签</span>
+    <span class="token keyword">return</span> pred
+pred_fn<span class="token punctuation">(</span><span class="token string">'converd_model.tflite'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面代码的工作主要分为了初始化和推理,以下是对tensorflow lite的优化和加速</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"># 直接从 tf.lite 中获取 Interpreter
-interpreter &#x3D; tf.lite.Interpreter(model_path&#x3D;&#39;converted_model.tflite&#39;)
-interpreter.allocate_tensors()
-# 获取输入和输出张量
-input_details &#x3D; interpreter.get_input_details()
-output_details &#x3D; interpreter.get_output_details()
-# 张量填充
-interpreter.set_tensor(input_details[0][&#39;index&#39;], x)
-# 运行推理
-interpreter.invoke()
-# 获取张量值
-results &#x3D; interpreter.get_tensor(output_details[0][&#39;index&#39;])
-# 获取对应标签
-pred &#x3D; decode_predictions(results)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 直接从 tf.lite 中获取 Interpreter</span>
+interpreter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>Interpreter<span class="token punctuation">(</span>model_path<span class="token operator">=</span><span class="token string">'converted_model.tflite'</span><span class="token punctuation">)</span>
+interpreter<span class="token punctuation">.</span>allocate_tensors<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 获取输入和输出张量</span>
+input_details <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_input_details<span class="token punctuation">(</span><span class="token punctuation">)</span>
+output_details <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_output_details<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 张量填充</span>
+interpreter<span class="token punctuation">.</span>set_tensor<span class="token punctuation">(</span>input_details<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'index'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+<span class="token comment"># 运行推理</span>
+interpreter<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 获取张量值</span>
+results <span class="token operator">=</span> interpreter<span class="token punctuation">.</span>get_tensor<span class="token punctuation">(</span>output_details<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'index'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># 获取对应标签</span>
+pred <span class="token operator">=</span> decode_predictions<span class="token punctuation">(</span>results<span class="token punctuation">)</span>
 pred<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>模型量化:<br>将<code>数据格式</code>降低或者增加，以适配部署的平台。<br>其中有<code>权重量化</code>,其适用于CPU场景,缩小4倍，加速2-3倍<br><code>整数量化</code>,其适用于CPU,EdgeTPU场景,缩小4倍,加速3倍以上<br><code>Float16量化</code>,适用于GPU或者CPU,缩小2倍<br>1.权重量化<br>将权重转换为8位精度</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">
-weight_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)
-#使用TFLiteConverter加载模型
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+weight_converter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>TFLiteConverter<span class="token punctuation">.</span>from_keras_model<span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+<span class="token comment">#使用TFLiteConverter加载模型</span>
 
-weight_converter.optimizations &#x3D; [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
-#使用optimizations对输出大小进行优化
+weight_converter<span class="token punctuation">.</span>optimizations <span class="token operator">=</span> <span class="token punctuation">[</span>tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>Optimize<span class="token punctuation">.</span>OPTIMIZE_FOR_SIZE<span class="token punctuation">]</span>
+<span class="token comment">#使用optimizations对输出大小进行优化</span>
 
-tflite_weight_model &#x3D; weight_converter.convert()
-open(&#39;weight_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_weight_model)
-#转换模型并且保存<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+tflite_weight_model <span class="token operator">=</span> weight_converter<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'weight_converted_model.tflite'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>tflite_weight_model<span class="token punctuation">)</span>
+<span class="token comment">#转换模型并且保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>转换完成后就可以使用上面的图片进行测试了</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">pred_fn(&#39;weight_converted_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pred_fn<span class="token punctuation">(</span><span class="token string">'weight_converted_model.tflite'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>整数量化:<br>将模型的<code>权重和激活</code>转换为8位整数<br>需要一个具有<code>代表性的数据集</code></p>
 <pre class="line-numbers language-python3" data-language="python3"><code class="language-python3"># 生成代表性的数据集，在实际中可能需要部分或者全部的训练数据
 dataset &#x3D; tf.data.Dataset.from_tensor_slices((x)).batch(1)
@@ -547,32 +547,32 @@ def representative_dataset_gen():
   for input_value in dataset.take(1):
     yield [input_value]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用<code>量化转换模型</code></p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#读取模型
-integer_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)
-#使用optimizations对输出大小优化
-inter_converter.optimizations &#x3D; [tf.lite.Optimize.DEFAULT]
-#指定代表性的数据集
-integer_converter.representative_dataset &#x3D; representative_dataset_gen
-#转换并保存
-tflite_integer_model &#x3D; integer_converter.convert()
-open(&#39;integer_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_integer_model)
-#预测
-pred_fn(&#39;integer_converted_model.tflite&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#读取模型</span>
+integer_converter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>TFLiteConverter<span class="token punctuation">.</span>from_keras_model<span class="token punctuation">(</span>model<span class="token punctuation">)</span>
+<span class="token comment">#使用optimizations对输出大小优化</span>
+inter_converter<span class="token punctuation">.</span>optimizations <span class="token operator">=</span> <span class="token punctuation">[</span>tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>Optimize<span class="token punctuation">.</span>DEFAULT<span class="token punctuation">]</span>
+<span class="token comment">#指定代表性的数据集</span>
+integer_converter<span class="token punctuation">.</span>representative_dataset <span class="token operator">=</span> representative_dataset_gen
+<span class="token comment">#转换并保存</span>
+tflite_integer_model <span class="token operator">=</span> integer_converter<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'integer_converted_model.tflite'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>tflite_integer_model<span class="token punctuation">)</span>
+<span class="token comment">#预测</span>
+pred_fn<span class="token punctuation">(</span><span class="token string">'integer_converted_model.tflite'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Float16量化:<br>将<code>权重值</code>转换为<code>16bit浮点值</code>,这样可将模型尺寸减小2倍</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">#使用tf.lite.TFLiteConverter加载模型  
-float16_converter &#x3D; tf.lite.TFLiteConverter.from_keras_model(model)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#使用tf.lite.TFLiteConverter加载模型  </span>
+float16_converter <span class="token operator">=</span> tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>TFLiteConverter<span class="token punctuation">.</span>from_keras_model<span class="token punctuation">(</span>model<span class="token punctuation">)</span>
 
 
-#使用optimizations对输出大小优化,同时指定float16为目标设备上的支持类型
+<span class="token comment">#使用optimizations对输出大小优化,同时指定float16为目标设备上的支持类型</span>
 
-float16_converter.optimizations &#x3D; [tf.lite.Optimiza.DEFAULT]
+float16_converter<span class="token punctuation">.</span>optimizations <span class="token operator">=</span> <span class="token punctuation">[</span>tf<span class="token punctuation">.</span>lite<span class="token punctuation">.</span>Optimiza<span class="token punctuation">.</span>DEFAULT<span class="token punctuation">]</span>
 
-float16_converter.target_spec.supported_types &#x3D; [tf.float16]
-#转换并保存
-tflite_float16_model &#x3D; float16_converter.convert()
-open(&#39;float16_converted_model.tflite&#39;,&#39;wb&#39;).write(tflite_float_model)
-#预测
-pred_fn(&#39;tflite_float16_model&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+float16_converter<span class="token punctuation">.</span>target_spec<span class="token punctuation">.</span>supported_types <span class="token operator">=</span> <span class="token punctuation">[</span>tf<span class="token punctuation">.</span>float16<span class="token punctuation">]</span>
+<span class="token comment">#转换并保存</span>
+tflite_float16_model <span class="token operator">=</span> float16_converter<span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'float16_converted_model.tflite'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>tflite_float_model<span class="token punctuation">)</span>
+<span class="token comment">#预测</span>
+pred_fn<span class="token punctuation">(</span><span class="token string">'tflite_float16_model'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -745,8 +745,8 @@ pred_fn(&#39;tflite_float16_model&#39;)<span aria-hidden="true" class="line-numb
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    模型应用部署
+                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
+                                    模型部署应用
                                 </a>
                             
                             
@@ -933,7 +933,7 @@ pred_fn(&#39;tflite_float16_model&#39;)<span aria-hidden="true" class="line-numb
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.6k</span>&nbsp;字
+                class="white-color">9.3k</span>&nbsp;字
             
             
             

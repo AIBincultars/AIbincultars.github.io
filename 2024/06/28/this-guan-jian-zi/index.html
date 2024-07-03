@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ONNX部署模型, lab of ML">
+    <meta name="keywords" content="this关键字, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ONNX部署模型 | lab of ML</title>
+    <title>this关键字 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ONNX部署模型</h1>
+                    <h1 class="description center-align post-title">this关键字</h1>
                 </div>
             </div>
         </div>
@@ -395,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
-                                模型部署应用
+                            <a href="/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                java基础
                             </a>
                         
                     </div>
@@ -408,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-05-12
+                    2024-06-28
                 </div>
                 
 
@@ -417,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    663
+                    238
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -452,47 +452,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>对ONNX的通俗理解是 模型部署前统一的中间格式,不同的框架如<code>pytorch</code>,<code>tensorflow</code>等框架训练后保存的模型，<br>统一转为ONNX的格式，这样方便部署到各种各样的平台上,如PC,单片机，手机等等。</p>
-<p>一.模型应用的流程</p>
-<p>  保存训练好的模型-&gt;转换为ONNX格式-&gt;用ONNX RUNTIME进行推理分析并且部署</p>
-<p>二.ONNX<br>1.torch.onnx.export()<br>pytorch中自带了onnx,下面用代码展示如何将pytorch模型转换为onnx格式的模型<br>先导入库</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import torch
-import torch.onnx
-from torch import nn
-import numpy as np
-import cv2
-import os<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">x &#x3D; torch.randn(1,3,256,256) #随机生成格式和照片一样的张量
+                <p>this:表示 当前类 的 对象<br>this可以在方法内部获取到对象的属性信息<br>this还可以区分局部变量和方法变量</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">public <span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">&#123;</span>
+    String color<span class="token punctuation">;</span><span class="token comment">#成员变量</span>
+    <span class="token builtin">int</span> speed<span class="token punctuation">;</span><span class="token comment">#成员变量</span>
+    <span class="token builtin">int</span> seat <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token comment">#成员变量</span>
 
-with torch.no_grad():#不更新梯度
-    torch.onnx.export(model,
-                      x,
-                      &#39;cnn.onnx&#39;,
-                      opset_version&#x3D;11,
-                      input_names&#x3D;[&#39;input&#39;],
-                      output_names&#x3D;[&#39;output&#39;]，
-                      dynamtic_axes&#x3D;[] )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中torch.onnx.export是pytorch自带的格式转换函数<br>第一个参数model,需要传入<code>已经实例化好的原模型</code><br>第二个参数x,需要传入一个和模型输入数据<code>格式相同</code>的一个随机数据,这样模型就会知道数据的格式(形式)是怎样的了。<br>第三个参数表示保存模型的名字为’xxx.onnx’<br>opset_version表示ONNX算子集的版本,此处设为11<br>剩下两个参数为输入输出的名字，要自己设置好</p>
-<p>2.onnx.checker.check_model()<br>onnx_load<br>若上述代码成果运行,则会生成一个onnx模型,目录下会新增一个’cnn.onnx’的模型文件,我们需要检测一下模型文件是否正确。</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import onnx
-onnx_model&#x3D;onnx_load(&#39;cnn.onnx&#39;)#用于加载模型文件
-try:
-    onnx.checker.check_model(onnx_model)#用于检测模型文件是否正确
-except Exception:#捕获异常值Exception
-    print(&#39;Model incorrect&#39;)
-else:
-    print(&#39;Model correct&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>3.onnxruntime<br>我们将pytorch编写的模型转换成onnx模型后,检验正确性通过后，利用onnxruntime运行模型</p>
-<pre class="line-numbers language-python3" data-language="python3"><code class="language-python3">import onnxruntime
-
-ort_session &#x3D; onnxruntime.InferenceSession(&#39;cnn.onnx&#39;)
-#获取了一个ONNX Runtime推理器
-ort_inputs &#x3D; &#123;&#39;input&#39;: input_img&#125; 
-#前面在torch.onnx.export命名了输入名为&#39;input&#39;
-ort_outputs &#x3D; ort_session.run([&#39;output&#39;],ort_inputs)[0]
-#run方法用于模型推理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注意对输入输出数据的处理,在对格式转换阶段,要确认输入的x的格式,要确保后续input的格式与x相同例如x.shape&#x3D;[256,1],则input的输入也要为[256,1],可以用np.pad()来完成,主要是元素个数要相同。要紧紧关注题提供的代码。<br>np.pad(input,(pad_width(axis&#x3D;0),pad_width(axis&#x3D;1))),其中axis&#x3D;0是行填充,aixs&#x3D;1是列填充</p>
-
+    public void run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">#默认会有一个this,当前正在执行这个方法的对象</span>
+        <span class="token comment">#这里面的this指的是c</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>this<span class="token punctuation">.</span>color<span class="token operator">+</span><span class="token string">"颜色的车能跑"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#成员变量</span>
+    <span class="token punctuation">&#125;</span>
+    public void fly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>color<span class="token operator">+</span><span class="token string">"颜色的车能飞"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#此时访问的也是成员变量</span>
+        <span class="token comment">#变量的查找顺序：先找自己方法内找有没有color,如果自己的没有，就去this里面找</span>
+    <span class="token punctuation">&#125;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        Car c <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#创建对象</span>
+        c<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span>
+        c<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#在调用方法时，java会自动把对象传递给方法，在方法中用this来接收对象</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">#this可以帮我们区别成员变量和局部变量</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -518,7 +499,7 @@ ort_outputs &#x3D; ort_session.run([&#39;output&#39;],ort_inputs)[0]
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/05/12/onnx-bu-shu-mo-xing/">https://aibincultars.github.io/2024/05/12/onnx-bu-shu-mo-xing/</a>
+                    <a href="https://aibincultars.github.io/2024/06/28/this-guan-jian-zi/">https://aibincultars.github.io/2024/06/28/this-guan-jian-zi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,58 +578,18 @@ ort_outputs &#x3D; ort_session.run([&#39;output&#39;],ort_inputs)[0]
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/05/14/tflite-bu-shu-mo-xing/">
+                <a href="/2024/06/28/this-guan-jian-zi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="tflite部署模型">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="this关键字">
                         
-                        <span class="card-title">tflite部署模型</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
-                                    模型部署应用
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/05/12/tensorflow-lite/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="使用TFLite Model Maker完成看图识花APP">
-                        
-                        <span class="card-title">使用TFLite Model Maker完成看图识花APP</span>
+                        <span class="card-title">this关键字</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -659,16 +600,54 @@ ort_outputs &#x3D; ort_session.run([&#39;output&#39;],ort_inputs)[0]
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/tensorflow-lite/" class="post-category">
-                                    tensorflow-lite
+                            <a href="/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    java基础
                                 </a>
                             
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/06/28/lei-yu-dui-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="类与对象">
+                        
+                        <span class="card-title">类与对象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Bincultars
                             
                         </span>
                     </div>
