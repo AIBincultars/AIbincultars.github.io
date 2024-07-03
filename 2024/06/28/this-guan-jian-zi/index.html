@@ -417,7 +417,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    238
+                    346
                 </div>
                 
 
@@ -460,20 +460,32 @@
 
     public void run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         <span class="token comment">#默认会有一个this,当前正在执行这个方法的对象</span>
-        <span class="token comment">#这里面的this指的是c</span>
+        <span class="token comment">#这里面的this指的是c和c2,谁在执行就是指的谁</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>this<span class="token punctuation">.</span>color<span class="token operator">+</span><span class="token string">"颜色的车能跑"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#成员变量</span>
     <span class="token punctuation">&#125;</span>
     public void fly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>color<span class="token operator">+</span><span class="token string">"颜色的车能飞"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#此时访问的也是成员变量</span>
-        <span class="token comment">#变量的查找顺序：先找自己方法内找有没有color,如果自己的没有，就去this里面找</span>
+        <span class="token comment">#变量的查找顺序：先找自己方法内找有没有color(局部变量),如果自己的没有，就去this里面找(成员变量)</span>
+        <span class="token comment">#传参传入的颜色是局部变量的颜色</span>
     <span class="token punctuation">&#125;</span>
     public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        Car c <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#创建对象</span>
+        Car c <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#创建对象,车内的属性就是类中定义好的成员变量</span>
         c<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span>
         c<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#在调用方法时，java会自动把对象传递给方法，在方法中用this来接收对象</span>
+
+        Car c2 <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        c2<span class="token punctuation">.</span>color<span class="token operator">=</span> <span class="token string">"green"</span>
+        c2<span class="token punctuation">.</span>speed<span class="token operator">=</span><span class="token number">190</span><span class="token punctuation">;</span>
+        c2<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
     <span class="token comment">#this可以帮我们区别成员变量和局部变量</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>总结:</p>
+<p>this:当前执行方法的对象</p>
+<p>this可以在方法内部获取到对象中的属性信息</p>
+<p>this还可以区分局部变量和成员变量</p>
+
                 
             </div>
             <hr/>
@@ -578,18 +590,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/06/28/this-guan-jian-zi/">
+                <a href="/2024/06/28/gou-zao-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="this关键字">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="构造方法">
                         
-                        <span class="card-title">this关键字</span>
+                        <span class="card-title">构造方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -599,9 +610,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -614,7 +625,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -646,8 +656,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Bincultars
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    java基础
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -832,7 +846,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.3k</span>&nbsp;字
+                class="white-color">9.8k</span>&nbsp;字
             
             
             

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CNN卷积神经网络, lab of ML">
+    <meta name="keywords" content="构造方法, lab of ML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CNN卷积神经网络 | lab of ML</title>
+    <title>构造方法 | lab of ML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CNN卷积神经网络</h1>
+                    <h1 class="description center-align post-title">构造方法</h1>
                 </div>
             </div>
         </div>
@@ -385,13 +385,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8/">
-                                <span class="chip bg-color">代码应用</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -399,8 +395,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                深度学习
+                            <a href="/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                java基础
                             </a>
                         
                     </div>
@@ -412,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-05-15
+                    2024-06-28
                 </div>
                 
 
@@ -421,7 +417,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    429
                 </div>
                 
 
@@ -456,7 +452,73 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <pre class="line-numbers language-python" data-language="python"><code class="language-python">public <span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">&#123;</span>
+    String color<span class="token punctuation">;</span><span class="token comment">#属性</span>
+    <span class="token builtin">int</span> speed<span class="token punctuation">;</span><span class="token comment">#属性</span>
+    <span class="token builtin">int</span> seat<span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token comment">#属性</span>
+
+    public void run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>this<span class="token punctuation">.</span>color<span class="token operator">+</span><span class="token string">"颜色的车在跑"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        Car c1 <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#实例化c1对象,创建第一辆车</span>
+        c1<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"红色"</span>
+        c1<span class="token punctuation">.</span>speed <span class="token operator">=</span> <span class="token number">120</span>
+
+        Car c2 <span class="token operator">=</span> new Car<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#实例化c2对象,创建第二辆车</span>
+        c2<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"绿色"</span>
+        c2<span class="token punctuation">.</span>speed <span class="token operator">=</span> <span class="token number">120</span>
+
+        c1<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        c2<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#两次运行中打印出来的东西不同</span>
+
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<p>构造方法</p>
+<p>在创建对象的时候，自动调用的方法(方便我们new 对象时候进行初始化)</p>
+<p>语法</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">public 类名<span class="token punctuation">(</span>传参<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+
+
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意:<br>1.没有返回值<br>2.在我们new的时候，自动调用构造方法<br>作用:<br>1.在创建对象的时候，给对象设置属性信息<br>2.java会默认自动送给每一个类一个无参数构造方法，当自己定义了就不赠送了</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">public <span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">&#123;</span>
+    
+    String color<span class="token punctuation">;</span><span class="token comment">#属性</span>
+    <span class="token builtin">int</span> speed<span class="token punctuation">;</span><span class="token comment">#属性</span>
+    <span class="token builtin">int</span> seat<span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span><span class="token comment">#属性</span>
+    <span class="token comment">#java会自动的赠送给每一个类一个无参数的构造方法</span>
+    <span class="token comment">#在创建对象的时候，自动调用方法，在new Car()时候会自己执行构造方法</span>
+    <span class="token comment">#若自己定义了构造方法，java就不会赠送无参数构造方法</span>
+    public Car<span class="token punctuation">(</span>String color<span class="token punctuation">,</span><span class="token builtin">int</span> speed<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        this<span class="token punctuation">.</span>speed <span class="token operator">=</span> speed
+        this<span class="token punctuation">.</span>color <span class="token operator">=</span> color
+    <span class="token punctuation">&#125;</span>
+    public void run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>this<span class="token punctuation">.</span>color<span class="token operator">+</span><span class="token string">"颜色的车在跑"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+        <span class="token comment">#构造了有参的方法，直接可在实例化对象的时候设置初始化信息</span>
+        Car c1 <span class="token operator">=</span> new Car<span class="token punctuation">(</span>color<span class="token punctuation">:</span><span class="token string">"红色"</span><span class="token punctuation">,</span>speed<span class="token punctuation">:</span><span class="token number">120</span><span class="token punctuation">)</span><span class="token comment">#实例化c1对象</span>
+        Car c2 <span class="token operator">=</span> new Car<span class="token punctuation">(</span>color<span class="token punctuation">:</span><span class="token string">"绿色"</span><span class="token punctuation">,</span>speed<span class="token punctuation">:</span><span class="token number">180</span><span class="token punctuation">)</span><span class="token comment">#实例化c2对象</span>
+
+        c1<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        c2<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#两次运行中打印出来的东西不同</span>
+
+    <span class="token punctuation">&#125;</span>
+
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -482,7 +544,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://aibincultars.github.io/2024/05/15/cnn-juan-ji-shen-jing-wang-luo/">https://aibincultars.github.io/2024/05/15/cnn-juan-ji-shen-jing-wang-luo/</a>
+                    <a href="https://aibincultars.github.io/2024/06/28/gou-zao-fang-fa/">https://aibincultars.github.io/2024/06/28/gou-zao-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,11 +581,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E4%BB%A3%E7%A0%81%E5%BA%94%E7%94%A8/">
-                                    <span class="chip bg-color">代码应用</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -569,13 +627,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/06/28/mian-xiang-dui-xiang-he-mian-xiang-guo-cheng/">
+                <a href="/2024/07/03/gou-zao-fang-fa-de-chong-zai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="面向对象和面向过程">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="构造方法的重载">
                         
-                        <span class="card-title">面向对象和面向过程</span>
+                        <span class="card-title">构造方法的重载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -586,7 +644,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-03
                         </span>
                         <span class="publish-author">
                             
@@ -610,13 +668,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/05/14/gradio-mo-xing-bu-shu/">
+                <a href="/2024/06/28/this-guan-jian-zi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="gradio部署模型">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="this关键字">
                         
-                        <span class="card-title">gradio部署模型</span>
+                        <span class="card-title">this关键字</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -627,14 +685,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8/" class="post-category">
-                                    模型部署应用
+                            <a href="/categories/java%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    java基础
                                 </a>
                             
                             
